@@ -18,5 +18,18 @@ public class CustomerController {
     public String woosinIntroduce(){
       return "woosinIntroduce";
 	}
+	@GetMapping("/woosinIntroduce2")
+    public String woosinIntroduce2(){
+      return "woosinIntroduce2";
+	}
+	@GetMapping("/woosinIntroduce3")
+    public String woosinIntroduce3(){
+      return "woosinIntroduce3";
+	}
+	@GetMapping("/registrationWoosin")
+    public String registrationWoosin(){
+      return "registrationWoosin";
+	}	
+
 	
 }
