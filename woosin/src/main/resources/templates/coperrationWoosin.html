@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<!--
+	Transitive by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+<head>
+	<title>Generic - Transitive by TEMPLATED</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+ <style>
+     p,h3,li,a{
+       font-family: "Nanum Gothic", sans-serif;
+       font-size: 23px;
+     }
+     th,td{
+     font-family: "Nanum Gothic", sans-serif;
+     font-size: 18px;
+     font-weight: bold ;
+     }
+
+</style>
+	<body class="subpage">
+	
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="/index">우신종합건설</a></div>
+				<a href="#menu" class="toggle"><span>Menu</span>MENU</a>
+			</header>
+	
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index">Home</a></li>
+					<li><a href="woosinIntroduce">회사소개</a></li>
+					<li><a href="registrationWoosin">인증/보유</a></li>
+					<li><a href="coperrationWoosin">기술자현황/실적</a></li>
+					<li><a href="elements.html">주요실적</a></li>
+					<li><a href="elements.html">커뮤니티</a></li>
+				</ul>
+			</nav>
+	<!-- Two -->
+	<section id="two" class="wrapper style3">
+		<div class="inner">
+			<div id="flexgrid">
+				<div>
+					<header>
+						<h3>업무흐름표</h3>
+					</header>
+					<img src="images/203.png" alt="" style="filter:invert()" width="230px" height="180px" />
+					<ul class="actions">
+						<li><a href="/woosinIntroduce2" class="button alt">Learn More</a></li>
+					</ul>
+				</div>
+				<div>
+					<header>
+						<h3>등록증</h3>
+					</header>
+					<img src="images/201.png" alt="" style="filter:invert()"  width="230px" height="180px" />
+					<ul class="actions">
+						<li><a href="/registrationWoosin" class="button alt">Learn More</a></li>
+					</ul>
+				</div>
+				<div>
+					<header>
+						<h3>오시는길</h3>
+					</header>
+					<img src="images/204.png" alt="" style="filter:invert()"  width="230px" height="180px" />
+					<ul class="actions">
+						<li><a href="/woosinIntroduce3" class="button alt">Learn More</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>		
+	
+		<!-- One -->
+	<section id="one" class="wrapper style2">
+		<div class="inner">
+			<div class="box">
+				<div class="image fit">
+					<img src="images/pic01.jpg" alt="" />
+				</div>
+				<div class="content">
+					<header class="align-center">
+						<h2>실적 내용</h2>
+					</header>
+					<hr />	 	
+				  	 	
+				  	 	<table>
+						  <tr>
+						    <th align="center">번호</th>
+						    <th align="center">발주처</th>
+						    <th align="center">공사명</th>
+						    <th align="center">공사기간</th>
+						    <th align="center">도급금액</th>
+						  </tr>
+						  
+							  <tr th:each="str:${map.list}">
+							    <td th:text="${str.corperrationNo}" style="color: black;">corperrationNo</td>
+							    <td th:text="${str.corperrationPlace}" style="color: black;">corperrationPlace</td>
+							    <td th:text="${str.corperrationName}" style="color: black;">corperrationName</td>
+							    <td th:text="${str.corperrationDate}" style="color: black;">corperrationDate</td>
+							    <td th:text="${str.corperrationPrice}" style="color: black;">corperrationPrice</td>
+							  </tr>
+						  
+						</table>
+				  	 	
+				  	 	
+				    </div>
+				    <a th:if="${map.currentPage > 1}" th:href="@{/coperrationWoosin?(currentPage=${map.currentPage-1})}">이전</a>
+				    <a th:if="${map.currentPage < map.lastPage}" th:href="@{/coperrationWoosin?(currentPage=${map.currentPage+1})}">다음</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+
+			
+			<!-- Four -->
+			<section id="four" class="wrapper style3">
+				<div class="inner">
+
+					<header class="align-center">
+						<p style="font-size:17px">대표 : 유광열 | 사업자번호 : 246-81-00380 | 주소 : 인천광역시 계양구 계양대로 138 4층(작전동)<br>
+						Tel : 032) 549-2207/2208 | Fax : 032) 549-2209 	</p>						
+						<div class="copyright">
+						<p  style="font-size:17px">Copyright &copy; woosin<br>
+						Web Agency: kuoo</p>
+						</div>
+					</header>
+				</div>
+			</section>
+						
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+	
+	</body>
+</html>
