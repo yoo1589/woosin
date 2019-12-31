@@ -12,17 +12,74 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 </head>
- <style>
-     p,h3,li,a{
-       font-family: "Nanum Gothic", sans-serif;
-       font-size: 23px;
-     }
-     th,td{
-     font-family: "Nanum Gothic", sans-serif;
-     font-size: 18px;
-     font-weight: bold ;
-     }
 
+<style>
+th,td{
+font-family: "Nanum Gothic", sans-serif;
+font-size: 18px;
+font-weight: bold ;
+}
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+ p,h3,li,a{
+      font-family: "Nanum Gothic", sans-serif;
+      font-size: 22px;
+}
+button{
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:68px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+button:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
 </style>
 	<body class="subpage">
 	
@@ -81,9 +138,27 @@
 		<!-- One -->
 	<section id="one" class="wrapper style2">
 		<div class="inner">
+		
+		<div class="topnav">
+		  <a href="#"></a>
+		  <a href="#"></a>
+		  <a href="#"></a>
+		  <a href="#"></a>
+		  <a href="#"></a>
+		  <a href="#"></a>
+		  <a href="#"></a>
+		  <a href="#"></a>
+		  <a href="#"></a>
+		  <button onclick = "location.href = '/coperrationWoosin3'">기술자 현황</button>
+		  <button onclick = "location.href = '/coperrationWoosin'">관급및 민강공사</button>
+		  <button onclick = "location.href = '/coperrationWoosin2'">공장및 물류센터</button>	
+		  <br>
+		  <br>
+
+		</div>
 			<div class="box">
 				<div class="image fit">
-					<img src="images/pic01.jpg" alt="" />
+					<img src="images/702.jpg" height="400" alt="" />
 				</div>
 				<div class="content">
 					<header class="align-center">
@@ -92,6 +167,7 @@
 					<hr />	 	
 				  	 	
 				  	 	<table>
+				  	 	<h3>관급및 민간공사</h3>
 						  <tr>
 						    <th align="center">번호</th>
 						    <th align="center">발주처</th>
@@ -109,14 +185,11 @@
 							  </tr>
 						  
 						</table>
-				  	 	
-				  	 	
 				    </div>
 				    <a th:if="${map.currentPage > 1}" th:href="@{/coperrationWoosin?(currentPage=${map.currentPage-1})}">이전</a>
 				    <a th:if="${map.currentPage < map.lastPage}" th:href="@{/coperrationWoosin?(currentPage=${map.currentPage+1})}">다음</a>
-				</div>
+					</div>
 			</div>
-		</div>
 	</section>
 	
 
