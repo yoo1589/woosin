@@ -14,7 +14,7 @@ import com.woosin.woosin.customer.service.CustomerService;
 public class CustomerController {
 	@Autowired CustomerService customerService;
 	//customer index 요청
-	@GetMapping("/index")
+	@GetMapping({"/index","/"})
     public String customerIndex(){
       return "index";
 	}
