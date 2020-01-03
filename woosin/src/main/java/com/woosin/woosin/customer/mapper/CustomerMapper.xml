@@ -5,6 +5,18 @@
  
 <mapper namespace="com.woosin.woosin.customer.mapper.CustomerMapper">
 
+	<!-- 연혁/타임라인 리스트 -->
+	<select id="selectTimelineList"
+	      resultType="com.woosin.woosin.customer.vo.Timeline">
+	      
+	   SELECT 
+		timeline_no as timelineNo,
+		timeline_date as timelineDate,
+		timeline_content as timelineContent
+	   FROM timeline
+	   ORDER BY timeline_date DESC
+	</select>
+	
 	<!-- 페이징 용도 -->
 	<select id="selectCoperrationWoosinPageCount3" resultType="int" parameterType="string">
 		SELECT COUNT(*)

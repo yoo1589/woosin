@@ -10,9 +10,12 @@ import com.woosin.woosin.customer.vo.CoperrationWoosin3;
 import com.woosin.woosin.customer.vo.CoperrationWoosinPage;
 import com.woosin.woosin.customer.vo.CoperrationWoosinPage2;
 import com.woosin.woosin.customer.vo.CoperrationWoosinPage3;
+import com.woosin.woosin.customer.vo.Timeline;
 
 @Mapper
 public interface CustomerMapper {
+	// 타임라인/연혁 리스트
+	public List<Timeline> selectTimelineList();
 	// 페이징 용도
 	public int selectCoperrationWoosinPageCount3();
 	public int selectCoperrationWoosinPageCount2();

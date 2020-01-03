@@ -1,5 +1,6 @@
 package com.woosin.woosin.customer.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +10,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.woosin.woosin.customer.service.CustomerService;
+import com.woosin.woosin.customer.vo.Timeline;
 
 @Controller
 public class CustomerController {
 	@Autowired CustomerService customerService;
+	
+	// 타임라인/연혁 리스트
+	@GetMapping("/woosinIntroduce4")
+	public String coperrationWoosin4(Model model){
+		List<Timeline> timeline = customerService.getTimelineList();
+		System.out.println("timeline "+timeline);
+		System.out.println("timeline 컨트롤러 호출");
+		model.addAttribute("timeline", timeline);
+		
+		return "woosinIntroduce4";
+	}	
+	
 	//customer index 요청
 	@GetMapping({"/index","/"})
     public String customerIndex(){
@@ -65,16 +79,21 @@ public class CustomerController {
 		return "coperrationWoosin2";
 	}
 	
-	// 기술자 리스트
+	/*
+	 * // 기술자 리스트 보류
+	 * 
+	 * @GetMapping("/coperrationWoosin3") public String coperrationWoosin3(Model
+	 * model,
+	 * 
+	 * @RequestParam(value="currentPage", defaultValue="1") int currentPage ){ int
+	 * rowPerPage = 10; Map<String, Object> map =
+	 * customerService.getCoperration3(currentPage, rowPerPage);
+	 * model.addAttribute("map", map); System.out.println(map); return
+	 * "coperrationWoosin3"; }
+	 */
 	@GetMapping("/coperrationWoosin3")
-	public String coperrationWoosin3(Model model, 
-								@RequestParam(value="currentPage", defaultValue="1") int currentPage
-								){
-		int rowPerPage = 10;
-		Map<String, Object> map = customerService.getCoperration3(currentPage, rowPerPage);		
-		model.addAttribute("map", map);
-		System.out.println(map);
-		return "coperrationWoosin3";
+    public String coperrationWoosin3(){
+      return "coperrationWoosin3";
 	}
 	
 }

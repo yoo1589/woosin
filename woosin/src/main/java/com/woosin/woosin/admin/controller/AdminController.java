@@ -10,10 +10,8 @@ public class AdminController {
 	
 	//Admin index 요청
 	@GetMapping("/adminIndex")
-    public String adminIndex(HttpSession session){
-		if (session.getAttribute("memberNo") == null) {
-         return "redirect:/";
-		}
+    public String adminIndex(){
+		
       return "adminIndex";
 	}
 	

@@ -1,0 +1,318 @@
+<!DOCTYPE HTML>
+<!--
+	Transitive by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+
+<head>
+	<title>Generic - Transitive by TEMPLATED</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  
+<style>
+th,td{
+font-family: "Nanum Gothic", sans-serif;
+font-size: 18px;
+font-weight: bold ;
+}
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+ p,h3,a{
+      font-family: "Nanum Gothic", sans-serif;
+      font-size: 22px;
+}
+button{
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:68px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+button:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+/* Fonts */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,700);
+body {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+}
+
+/* Layout */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Styling */
+.timeline {
+  margin: 4em auto;
+  position: relative;
+  max-width: 46em;
+}
+.timeline:before {
+  background-color: black;
+  content: '';
+  margin-left: -1px;
+  position: absolute;
+  top: 0;
+  left: 2em;
+  width: 2px;
+  height: 100%;
+}
+
+.timeline-event {
+  position: relative;
+}
+.timeline-event:hover .timeline-event-icon {
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  background-color: #a83279;
+}
+.timeline-event:hover .timeline-event-thumbnail {
+  -moz-box-shadow: inset 40em 0 0 0 #a83279;
+  -webkit-box-shadow: inset 40em 0 0 0 #a83279;
+  box-shadow: inset 40em 0 0 0 #a83279;
+}
+
+.timeline-event-copy {
+  padding: 2em;
+  position: relative;
+  top: -1.875em;
+  left: 4em;
+  width: 80%;
+}
+.timeline-event-copy h3 {
+  font-size: 1.75em;
+}
+.timeline-event-copy h4 {
+  font-size: 1.2em;
+  margin-bottom: 1.2em;
+}
+.timeline-event-copy strong {
+  font-weight: 700;
+}
+.timeline-event-copy p:not(.timeline-event-thumbnail) {
+  padding-bottom: 1.2em;
+}
+
+.timeline-event-icon {
+  -moz-transition: -moz-transform 0.2s ease-in;
+  -o-transition: -o-transform 0.2s ease-in;
+  -webkit-transition: -webkit-transform 0.2s ease-in;
+  transition: transform 0.2s ease-in;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background-color: black;
+  outline: 10px solid white;
+  display: block;
+  margin: 0.5em 0.5em 0.5em -0.5em;
+  position: absolute;
+  top: 0;
+  left: 2em;
+  width: 1em;
+  height: 1em;
+}
+
+.timeline-event-thumbnail {
+  -moz-transition: box-shadow 0.5s ease-in 0.1s;
+  -o-transition: box-shadow 0.5s ease-in 0.1s;
+  -webkit-transition: box-shadow 0.5s ease-in;
+  -webkit-transition-delay: 0.1s;
+  transition: box-shadow 0.5s ease-in 0.1s;
+  color: white;
+  font-size: 0.75em;
+  background-color: black;
+  -moz-box-shadow: inset 0 0 0 0em #ef795a;
+  -webkit-box-shadow: inset 0 0 0 0em #ef795a;
+  box-shadow: inset 0 0 0 0em #ef795a;
+  display: inline-block;
+  margin-bottom: 1.2em;
+  padding: 0.25em 1em 0.2em 1em;
+}
+</style>	
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+	
+	<body class="subpage">
+
+	<!-- Header -->
+		<header id="header">
+			<div class="logo"><a href="/index">우신종합건설</a></div>
+			<a href="#menu" class="toggle">MENU<span>Menu</span></a>
+		</header>
+
+	<!-- Nav -->
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="index">Home</a></li>
+				<li><a href="woosinIntroduce">회사소개</a></li>
+				<li><a href="registrationWoosin">인증/보유</a></li>
+				<li><a href="coperrationWoosin">주요사업내용/실적</a></li>
+				<li><a href="elements.html">주요실적</a></li>
+				<li><a href="elements.html">커뮤니티</a></li>
+			</ul>
+		</nav>
+	
+		<!-- Two -->
+			<section id="two" class="wrapper style3">
+				<div class="inner">
+					<div id="flexgrid">
+						<div>
+							<header>
+								<h3>업무흐름표</h3>
+							</header>
+							<img src="images/203.png" alt="" style="filter:invert()" width="230px" height="180px" />
+							<ul class="actions">
+								<li><a href="/woosinIntroduce2" class="button alt">Learn More</a></li>
+							</ul>
+						</div>
+						<div>
+							<header>
+								<h3>등록증</h3>
+							</header>
+							<img src="images/201.png" alt="" style="filter:invert()"  width="230px" height="180px" />
+							<ul class="actions">
+								<li><a href="/registrationWoosin" class="button alt">Learn More</a></li>
+							</ul>
+						</div>
+						<div>
+							<header>
+								<h3>오시는길</h3>
+							</header>
+							<img src="images/204.png" alt="" style="filter:invert()"  width="230px" height="180px" />
+							<ul class="actions">
+								<li><a href="/woosinIntroduce3" class="button alt">Learn More</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>	
+	
+	<!-- One -->
+	<section id="one" class="wrapper style2">
+		<div class="inner">
+			<div class="topnav">
+			  <a href="#"></a>
+			  <a href="#"></a>
+			  <a href="#"></a>
+			  <a href="#"></a>
+			  <a href="#"></a>
+			  <a href="#"></a>
+			  <button onclick = "location.href = '/woosinIntroduce'">인사말씀</button>
+			  <button onclick = "location.href = '/woosinIntroduce2'">업무흐름표</button>
+			  <button onclick = "location.href = '/woosinIntroduce4'">연혁/타임라인</button>				  
+			  <button onclick = "location.href = '/woosinIntroduce3'">오시는길</button>
+		  <br>
+		  <br>
+		</div>	
+			<!-- 타임라인사용 연혁 타임라인 리스트 출력확인 -->
+			<div class="box" style="background: #cce5ff">
+				<div class="image fit">
+				<img src="images/801.jpg" height="400px" alt="" />
+				</div>
+				
+				<ul class="timeline">
+				  <li class="timeline-event" th:each="str:${timeline}">
+				    <label class="timeline-event-icon"></label>
+				    <div class="timeline-event-copy">
+				      <p class="timeline-event-thumbnail" th:text="${str.timelineDate}"></p>
+				      <h4 th:text="${str.timelineContent}"></h4>
+				     </div>				
+				  </li> 
+				</ul>
+
+			</div>
+	</div>
+	</section>
+
+		
+			<!-- Four -->
+			<section id="four" class="wrapper style3">
+				<div class="inner">
+
+					<header class="align-center">
+						<p style="font-size:17px">대표 : 유광열 | 사업자번호 : 246-81-00380<br>
+						주소 : 인천광역시 계양구 계양대로 138 4층(작전동)<br>
+						Tel : 032) 549-2207/2208 | Fax : 032) 549-2209 	</p>						
+						<div class="copyright">
+						<p  style="font-size:17px">Copyright &copy; woosin<br>
+						Web Agency: kuoo</p>
+						</div>
+					</header>
+				</div>
+			</section>
+
+					
+	<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

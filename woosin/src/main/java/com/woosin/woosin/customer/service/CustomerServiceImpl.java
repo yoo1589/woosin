@@ -15,11 +15,19 @@ import com.woosin.woosin.customer.vo.CoperrationWoosin3;
 import com.woosin.woosin.customer.vo.CoperrationWoosinPage;
 import com.woosin.woosin.customer.vo.CoperrationWoosinPage2;
 import com.woosin.woosin.customer.vo.CoperrationWoosinPage3;
+import com.woosin.woosin.customer.vo.Timeline;
 
 @Service
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
 @Autowired CustomerMapper customerMapper;
+	// 타임라인/연혁 리스트 확인
+
+	@Override
+	public List<Timeline> getTimelineList() {
+		System.out.println("타임라인리스트 서비스쪽");
+		return customerMapper.selectTimelineList();
+	}
 
 	// 기술자 리스트확인
 	@Override
