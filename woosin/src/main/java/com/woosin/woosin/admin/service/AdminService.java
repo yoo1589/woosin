@@ -7,6 +7,14 @@ import com.woosin.woosin.customer.vo.CoperrationWoosin;
 import com.woosin.woosin.customer.vo.Timeline;
 
 public interface AdminService {
+	// 연혁 리스트 삭제
+	public int deleteCorperration3(int timelineNo);		
+	// 물류센터 삭제
+	public int deleteCorperration2(int corperrationNo);	
+	// 민간공사 삭제
+	public int deleteCorperration(int corperrationNo);
+	// 타임라인/연혁 추가
+	public int addTimeline(Timeline timeline);
 	// 공장,물류센터 추가
 	public int addCoperration2(CoperrationWoosin coperrationWoosin);		
 	// 민간공사 추가

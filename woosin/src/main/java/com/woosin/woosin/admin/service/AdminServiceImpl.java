@@ -20,7 +20,32 @@ import com.woosin.woosin.customer.vo.Timeline;
 @Transactional
 public class AdminServiceImpl implements AdminService{
 @Autowired AdminMapper adminMapper;
-
+	// 연혁 리스트 삭제
+	@Override
+	public int deleteCorperration3(int timelineNo) {		
+		return adminMapper.removeCorperration3(timelineNo);
+	}
+	// 공장 리스트 삭제
+	@Override
+	public int deleteCorperration2(int corperrationNo) {		
+		return adminMapper.removeCorperration2(corperrationNo);
+	}
+	// 민강공사 리스트 삭제
+	@Override
+	public int deleteCorperration(int corperrationNo) {		
+		return adminMapper.removeCorperration(corperrationNo);
+	}
+	// 연혁 리스트 추가
+	@Override
+	public int addTimeline(Timeline timeline) {		
+		return adminMapper.insertTimeline(timeline);
+	}
+	// 공장 리스트 추가
+	@Override
+	public int addCoperration2(CoperrationWoosin coperrationWoosin) {		
+		return adminMapper.insertCoperrationWoosin2(coperrationWoosin);
+	}
+	// 민강공사 리스트 추가
 	@Override
 	public int addCoperration1(CoperrationWoosin coperrationWoosin) {		
 		return adminMapper.insertCoperrationWoosin(coperrationWoosin);

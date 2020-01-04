@@ -140,19 +140,19 @@ width:16px;height:16px;background:##B2EBF4;}
 					<h3>관급및 민강공사 추가</h3>
 					<form action="/addCoperration1" class="was-validated" method="post" > 
 						<div class="form-group">
-							<label for="qnaTitle">발주처:</label> 
+							<label for="corperrationPlace">발주처:</label> 
 							<input type="text" class="form-control" id="corperrationPlace" placeholder="발주처 입력" name="corperrationPlace" required>
 						</div>
 						<div class="form-group">
-							<label for="qnaTitle">공사명:</label> 
+							<label for="corperrationName">공사명:</label> 
 							<input type="text" class="form-control" id="corperrationName" placeholder="공사명 입력" name="corperrationName" required>
 						</div>
 						<div class="form-group">
-							<label for="qnaTitle">공사기간:</label> 
+							<label for="corperrationDate">공사기간:</label> 
 							<input type="text" class="form-control" id="corperrationDate" placeholder="공사기간 입력" name="corperrationDate" required>
 						</div>
 						<div class="form-group">
-							<label for="qnaTitle">도급금액:</label> 
+							<label for="corperrationPrice">도급금액:</label> 
 							<input type="text" class="form-control" id="corperrationPrice" placeholder="도급금액 입력" name="corperrationPrice" required>
 						</div>
 						<button id="addButton" type="submit" class="btn btn-primary" style="background-color: #B5B2FF;">입력</button>
@@ -166,6 +166,7 @@ width:16px;height:16px;background:##B2EBF4;}
 					    <th align="center">공사명</th>
 					    <th align="center">공사기간</th>
 					    <th align="center">도급금액</th>
+					    <th align="center">삭제</th>
 					  </tr>
 					  
 						  <tr th:each="str:${map.list}">
@@ -174,6 +175,7 @@ width:16px;height:16px;background:##B2EBF4;}
 						    <td th:text="${str.corperrationName}" style="color: black;">corperrationName</td>
 						    <td th:text="${str.corperrationDate}" style="color: black;">corperrationDate</td>
 						    <td th:text="${str.corperrationPrice}" style="color: black;">corperrationPrice</td>
+						    <td><a href="#" th:href="@{/deleteCorperration?(corperrationNo=${str.corperrationNo})}" class="btn btn-primary">삭제</a></td>
 						  </tr>
 					  
 					</table>
@@ -189,19 +191,19 @@ width:16px;height:16px;background:##B2EBF4;}
 					<h3>관급및 민강공사 추가</h3>
 					<form action="/addCoperration2" class="was-validated" method="post" > 
 						<div class="form-group">
-							<label for="qnaTitle">발주처:</label> 
+							<label for="corperrationPlace">발주처:</label> 
 							<input type="text" class="form-control" id="corperrationPlace" placeholder="발주처 입력" name="corperrationPlace" required>
 						</div>
 						<div class="form-group">
-							<label for="qnaTitle">공사명:</label> 
+							<label for="corperrationName">공사명:</label> 
 							<input type="text" class="form-control" id="corperrationName" placeholder="공사명 입력" name="corperrationName" required>
 						</div>
 						<div class="form-group">
-							<label for="qnaTitle">공사기간:</label> 
+							<label for="corperrationDate">공사기간:</label> 
 							<input type="text" class="form-control" id="corperrationDate" placeholder="공사기간 입력" name="corperrationDate" required>
 						</div>
 						<div class="form-group">
-							<label for="qnaTitle">도급금액:</label> 
+							<label for="corperrationPrice">도급금액:</label> 
 							<input type="text" class="form-control" id="corperrationPrice" placeholder="도급금액 입력" name="corperrationPrice" required>
 						</div>
 						<button id="addButton" type="submit" class="btn btn-primary" style="background-color: #B5B2FF;">입력</button>
@@ -222,6 +224,7 @@ width:16px;height:16px;background:##B2EBF4;}
 					    <td th:text="${str1.corperrationName}" style="color: black;">corperrationName</td>
 					    <td th:text="${str1.corperrationDate}" style="color: black;">corperrationDate</td>
 					    <td th:text="${str1.corperrationPrice}" style="color: black;">corperrationPrice</td>
+					    <td><a href="#" th:href="@{/deleteCorperration2?(corperrationNo=${str1.corperrationNo})}" class="btn btn-primary">삭제</a></td>
 					  </tr>
 				</table>	
 			    <a th:if="${map1.currentPage > 1}" th:href="@{/adminIndex?(currentPage=${map1.currentPage-1})}">이전</a>
@@ -238,13 +241,28 @@ width:16px;height:16px;background:##B2EBF4;}
 				<div class="image fit">
 				<img src="images/801.jpg" height="400px" alt="" />
 				</div>
-				
+				<h3>타임라인/연혁 추가</h3>
+					<form action="/addTimeline" class="was-validated" method="post" > 
+						<div class="form-group">
+							<label for="timelineDate">날짜:</label> 
+							<input type="date" class="form-control" id="timelineDate" placeholder="날짜 입력" name="timelineDate" required>
+						</div>
+						<div class="form-group">
+							<label for="timelineContent">연혁 내용:</label> 
+							<input type="text" class="form-control" id="timelineContent" placeholder="연혁 입력" name="timelineContent" required>
+						</div>
+						
+						<button id="addButton" type="submit" class="btn btn-primary" style="background-color: #B5B2FF;">입력</button>
+					</form>
 				<ul>
 				  <li class="timeline-event" th:each="str:${timeline}">
 				    <label class="timeline-event-icon"></label>
 				    <div class="timeline-event-copy">
-				      <p class="timeline-event-thumbnail" th:text="${str.timelineDate}"></p>
+				      <p class="timeline-event-thumbnail" th:text="${str.timelineDate}">
+				      </p>
 				      <h4 th:text="${str.timelineContent}"></h4>
+				      <a href="#" th:href="@{/deleteCorperration3?(timelineNo=${str.timelineNo})}" class="btn btn-primary">삭제</a>
+				      
 				     </div>				
 				  </li> 
 				</ul>
@@ -272,6 +290,9 @@ width:16px;height:16px;background:##B2EBF4;}
 		<script src="assets1/js/breakpoints.min.js"></script>
 		<script src="assets1/js/util.js"></script>
 		<script src="assets1/js/main.js"></script>
+<script>
 
+
+</script>
 </body>
 </html>

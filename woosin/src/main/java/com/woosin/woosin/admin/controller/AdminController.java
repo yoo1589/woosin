@@ -3,6 +3,8 @@ package com.woosin.woosin.admin.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,11 +19,43 @@ import com.woosin.woosin.customer.vo.Timeline;
 @Controller
 public class AdminController {
 	@Autowired AdminService adminService;
+	
+	
+	// 연혁 리스트 삭제
+	@GetMapping("/deleteCorperration3")
+    public String cancelSeatReservation3(
+    	@RequestParam(value="timelineNo") int timelineNo) {
+		adminService.deleteCorperration3(timelineNo);
+        return "redirect:/adminIndex";
+	}	
+	
+	// 물류센터 삭제
+	@GetMapping("/deleteCorperration2")
+    public String cancelSeatReservation2(
+    		@RequestParam(value="corperrationNo") int corperrationNo) {
+		adminService.deleteCorperration2(corperrationNo);
+        return "redirect:/adminIndex";
+	}	
+	
+	// 민간공사 삭제
+	@GetMapping("/deleteCorperration")
+    public String cancelSeatReservation(
+    		@RequestParam(value="corperrationNo") int corperrationNo) {
+		adminService.deleteCorperration(corperrationNo);
+        return "redirect:/adminIndex";
+	}	
+	
+	// add 연혁
+	@PostMapping("/addTimeline")
+    public String addTimeline(Timeline timeline) {
+		adminService.addTimeline(timeline);
+        return "redirect:/adminIndex";
+	}		
 	// add 공장
 	@PostMapping("/addCoperration2")
     public String addCoperration2(CoperrationWoosin coperrationWoosin) {
 		System.out.println(coperrationWoosin);
-		adminService.addCoperration1(coperrationWoosin);
+		adminService.addCoperration2(coperrationWoosin);
         return "redirect:/adminIndex";
 	}	
 	// add 민간공사

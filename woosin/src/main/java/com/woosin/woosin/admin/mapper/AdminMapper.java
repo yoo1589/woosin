@@ -12,7 +12,17 @@ import com.woosin.woosin.customer.vo.Timeline;
 
 @Mapper
 public interface AdminMapper {
-	// QnA 등록 
+	// 연혁 리스트 삭제
+	public int removeCorperration3(int timelineNo);		
+	// 공장 리스트 삭제
+	public int removeCorperration2(int corperrationNo);		
+	// 민간 공사 삭제
+	public int removeCorperration(int corperrationNo);		
+	// 타임라인 연혁 
+	public int insertTimeline(Timeline timeline);	
+	// 물류센터및 공장 등록 
+	public int insertCoperrationWoosin2(CoperrationWoosin coperrationWoosin);	
+	// 민간공사 등록 
 	public int insertCoperrationWoosin(CoperrationWoosin coperrationWoosin);
 	// 타임라인/연혁 리스트
 	public List<Timeline> selectTimelineList();

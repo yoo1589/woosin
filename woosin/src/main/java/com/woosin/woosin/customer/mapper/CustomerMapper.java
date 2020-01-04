@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.woosin.woosin.customer.vo.Community;
 import com.woosin.woosin.customer.vo.CoperrationWoosin;
 import com.woosin.woosin.customer.vo.CoperrationWoosin2;
 import com.woosin.woosin.customer.vo.CoperrationWoosin3;
@@ -14,6 +15,12 @@ import com.woosin.woosin.customer.vo.Timeline;
 
 @Mapper
 public interface CustomerMapper {
+	//페이징 용도
+	public int selectCommunityPageCount2();
+	// 상담 리스트
+	public List<Community> selectCommunity2(CoperrationWoosinPage2 coperrationWoosinPage2);		
+	// QnA 등록 
+	public int insertCommunity(Community community);
 	// 타임라인/연혁 리스트
 	public List<Timeline> selectTimelineList();
 	// 페이징 용도

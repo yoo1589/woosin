@@ -12,8 +12,36 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 </head>
-
 <style>
+table {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin: 20px 10px;
+}
+table thead th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #fff;
+    background: #e7708d;
+    margin: 20px 10px;
+}
+table tbody th {
+    width: 150px;
+    padding: 10px;
+}
+table td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+}
+table .even {
+    background: #fdf3f5;
+}
 th,td{
 font-family: "Nanum Gothic", sans-serif;
 font-size: 18px;
@@ -40,7 +68,7 @@ font-weight: bold ;
   background-color: #ddd;
   color: black;
 }
- p,h3,li,a{
+ p,h3,li,a,label{
       font-family: "Nanum Gothic", sans-serif;
       font-size: 22px;
 }
@@ -98,7 +126,7 @@ button:hover:before,button:hover:after{
 					<li><a href="coperrationWoosin">주요실적</a></li>
 					<li><a href="elements.html">공사이미지</a></li>
 					<li><a href="registrationWoosin">인증/보유</a></li>
-					<li><a href="Community">커뮤니티</a></li>
+					<li><a href="elements.html">커뮤니티</a></li>
 				</ul>
 			</nav>
 	<!-- Two -->
@@ -148,48 +176,47 @@ button:hover:before,button:hover:after{
 		  <a href="#"></a>
 		  <a href="#"></a>
 		  <a href="#"></a>
-
-		  <button onclick = "location.href = '/coperrationWoosin3'">주요 사업 내용</button>
-		  <button onclick = "location.href = '/coperrationWoosin'">관급및 민간공사</button>
-		  <button onclick = "location.href = '/coperrationWoosin2'">공장및 물류센터</button>	
+		   <a href="#"></a>
+		  <a href="#"></a>
+		  <a href="#"></a>
+		  <a href="#"></a>
+		  <button onclick = "location.href = '/Community3'">공지사항</button>
+		  <button onclick = "location.href = '/Community2'">상담실</button>
+		  <button onclick = "location.href = '/Community'">1:1 문의하기</button>	
 		  <br>
 		  <br>
 
 		</div>
-			<div class="box">
-				<div class="image fit">
-					<img src="images/702.jpg" height="400" alt="" />
-				</div>
-				<div class="content">
-					<header class="align-center">
-						<h2>실적 내용</h2>
-					</header>
-					<hr />	 	
-				  	 	
-				  	 	<table>
-				  	 	<h3>관급및 민간공사</h3>
-						  <tr>
-						    <th align="center">번호</th>
-						    <th align="center">발주처</th>
-						    <th align="center">공사명</th>
-						    <th align="center">공사기간</th>
-						    <th align="center">도급금액</th>
-						  </tr>
-						  
-							  <tr th:each="str:${map.list}">
-							    <td th:text="${str.corperrationNo}" style="color: black;">corperrationNo</td>
-							    <td th:text="${str.corperrationPlace}" style="color: black;">corperrationPlace</td>
-							    <td th:text="${str.corperrationName}" style="color: black;">corperrationName</td>
-							    <td th:text="${str.corperrationDate}" style="color: black;">corperrationDate</td>
-							    <td th:text="${str.corperrationPrice}" style="color: black;">corperrationPrice</td>
-							  </tr>
-						  
-						</table>
-				    </div>
-				    <a th:if="${map.currentPage > 1}" th:href="@{/coperrationWoosin?(currentPage=${map.currentPage-1})}">이전</a>
-				    <a th:if="${map.currentPage < map.lastPage}" th:href="@{/coperrationWoosin?(currentPage=${map.currentPage+1})}">다음</a>
-					</div>
+		<!-- content -->
+		
+		<div class="box">
+		<div class="image fit">
+			<img src="images/906.jpg" height="400" alt="" />
+		</div>
+		<div class="content">
+			<header class="align-center">
+				<h2>상담실</h2>
+			</header>
+			<hr />	 	
+		  	 	<table>
+		  	 	<h3>문의 리스트</h3>
+				  <tr>
+				    <th align="center">상담 번호</th>
+				    <th align="center">제목</th>
+				  </tr>
+				  
+					  <tr th:each="str:${map.list}">
+					    <td th:text="${str.communityNo}" style="width: 10px; color: black;">corperrationNo</td>
+					    <td th:text="${str.name}" style="color: black;">corperrationPlace</td>
+					  </tr>
+				  
+				</table>
+		    </div>
+		    <a th:if="${map.currentPage > 1}" th:href="@{/Community2?(currentPage=${map.currentPage-1})}">이전</a>
+		    <a th:if="${map.currentPage < map.lastPage}" th:href="@{/Community2?(currentPage=${map.currentPage+1})}">다음</a>
 			</div>
+			
+		</div>
 	</section>
 	
 
