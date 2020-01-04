@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>adminIndex</title>
 		<meta charset="utf-8" />
@@ -8,173 +8,270 @@
 		<link rel="stylesheet" href="assets1/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets1/css/noscript.css" /></noscript>
 	</head>
-	<body class="is-preload">
+	
+<style>
+/* Styling */
+.timeline {
+  margin: 4em auto;
+  position: relative;
+  max-width: 46em;
+}
+.timeline:before {
+  background-color: black;
+  content: '';
+  margin-left: -1px;
+  position: absolute;
+  top: 0;
+  left: 2em;
+  width: 2px;
+  height: 100%;
+}
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+.timeline-event {
+  position: relative;
+}
+.timeline-event:hover .timeline-event-icon {
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  background-color: #a83279;
+}
+.timeline-event:hover .timeline-event-thumbnail {
+  -moz-box-shadow: inset 40em 0 0 0 #a83279;
+  -webkit-box-shadow: inset 40em 0 0 0 #a83279;
+  box-shadow: inset 40em 0 0 0 #a83279;
+}
 
-				<!-- Header -->
-					<header id="header" class="alt">
-						<span class="logo"><img src="images1/logo.svg" alt="" /></span>
-						<h1>관리자</h1>
-						<p>메뉴얼 확인 요망<br />
-						
-					</header>
+.timeline-event-copy {
+  padding: 2em;
+  position: relative;
+  top: -1.875em;
+  left: 4em;
+  width: 80%;
+}
+.timeline-event-copy h3 {
+  font-size: 1.75em;
+}
+.timeline-event-copy h4 {
+  font-size: 1.2em;
+  margin-bottom: 1.2em;
+}
+.timeline-event-copy strong {
+  font-weight: 700;
+}
+.timeline-event-copy p:not(.timeline-event-thumbnail) {
+  padding-bottom: 1.2em;
+}
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul>
-							<li><a href="#intro" class="active">Introduction</a></li>
-							<li><a href="#first">First Section</a></li>
-							<li><a href="#second">Second Section</a></li>
-							<li><a href="#cta">Get Started</a></li>
-						</ul>
-					</nav>
+.timeline-event-icon {
+  -moz-transition: -moz-transform 0.2s ease-in;
+  -o-transition: -o-transform 0.2s ease-in;
+  -webkit-transition: -webkit-transform 0.2s ease-in;
+  transition: transform 0.2s ease-in;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background-color: black;
+  outline: 10px solid white;
+  display: block;
+  margin: 0.5em 0.5em 0.5em -0.5em;
+  position: absolute;
+  top: 0;
+  left: 2em;
+  width: 1em;
+  height: 1em;
+}
 
-				<!-- Main -->
-					<div id="main">
+.timeline-event-thumbnail {
+  -moz-transition: box-shadow 0.5s ease-in 0.1s;
+  -o-transition: box-shadow 0.5s ease-in 0.1s;
+  -webkit-transition: box-shadow 0.5s ease-in;
+  -webkit-transition-delay: 0.1s;
+  transition: box-shadow 0.5s ease-in 0.1s;
+  color: white;
+  font-size: 0.75em;
+  background-color: black;
+  -moz-box-shadow: inset 0 0 0 0em #ef795a;
+  -webkit-box-shadow: inset 0 0 0 0em #ef795a;
+  box-shadow: inset 0 0 0 0em #ef795a;
+  display: inline-block;
+  margin-bottom: 1.2em;
+  padding: 0.25em 1em 0.2em 1em;
+}
 
-						<!-- Introduction -->
-							<section id="intro" class="main">
-								<div class="spotlight">
-									<div class="content">
-										<header class="major">
-											<h2>Ipsum sed adipiscing</h2>
-										</header>
-										<p>Sed lorem ipsum dolor sit amet nullam consequat feugiat consequat magna
-										adipiscing magna etiam amet veroeros. Lorem ipsum dolor tempus sit cursus.
-										Tempus nisl et nullam lorem ipsum dolor sit amet aliquam.</p>
-										<ul class="actions">
-											<li><a href="generic.html" class="button">Learn More</a></li>
-										</ul>
-									</div>
-									<span class="image"><img src="images1/pic01.jpg" alt="" /></span>
-								</div>
-							</section>
+::-webkit-scrollbar{width: 16px;}
+::-webkit-scrollbar-track {background-color:##B2EBF4;}
+::-webkit-scrollbar-thumb {background-color:#C98AFF;border-radius: 10px;}
+::-webkit-scrollbar-thumb:hover {background: #555;}
+::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+width:16px;height:16px;background:##B2EBF4;} 
+</style>
+<body class="is-preload">
 
-						<!-- First Section -->
-							<section id="first" class="main special">
-								<header class="major">
-									<h2>Magna veroeros</h2>
-								</header>
-								<ul class="features">
-									<li>
-										<span class="icon solid major style1 fa-code"></span>
-										<h3>Ipsum consequat</h3>
-										<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
-									</li>
-									<li>
-										<span class="icon major style3 fa-copy"></span>
-										<h3>Amed sed feugiat</h3>
-										<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
-									</li>
-									<li>
-										<span class="icon major style5 fa-gem"></span>
-										<h3>Dolor nullam</h3>
-										<p>Sed lorem amet ipsum dolor et amet nullam consequat a feugiat consequat tempus veroeros sed consequat.</p>
-									</li>
-								</ul>
-								<footer class="major">
-									<ul class="actions special">
-										<li><a href="generic.html" class="button">Learn More</a></li>
-									</ul>
-								</footer>
-							</section>
+	<!-- Wrapper -->
+	<div id="wrapper">
+	<!-- Header -->
+		<header id="header" class="alt">
+			<span class="logo"><img src="images1/logo.svg" alt="" /></span>
+			<h1>관리자</h1>
+			<p>메뉴얼 확인 요망<br />
+			
+		</header>
 
-						<!-- Second Section -->
-							<section id="second" class="main special">
-								<header class="major">
-									<h2>Ipsum consequat</h2>
-									<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
-									posuere. Nulla massa urna, fermentum eget quam aliquet.</p>
-								</header>
-								<ul class="statistics">
-									<li class="style1">
-										<span class="icon solid fa-code-branch"></span>
-										<strong>5,120</strong> Etiam
-									</li>
-									<li class="style2">
-										<span class="icon fa-folder-open"></span>
-										<strong>8,192</strong> Magna
-									</li>
-									<li class="style3">
-										<span class="icon solid fa-signal"></span>
-										<strong>2,048</strong> Tempus
-									</li>
-									<li class="style4">
-										<span class="icon solid fa-laptop"></span>
-										<strong>4,096</strong> Aliquam
-									</li>
-									<li class="style5">
-										<span class="icon fa-gem"></span>
-										<strong>1,024</strong> Nullam
-									</li>
-								</ul>
-								<p class="content">Nam elementum nisl et mi a commodo porttitor. Morbi sit amet nisl eu arcu faucibus hendrerit vel a risus. Nam a orci mi, elementum ac arcu sit amet, fermentum pellentesque et purus. Integer maximus varius lorem, sed convallis diam accumsan sed. Etiam porttitor placerat sapien, sed eleifend a enim pulvinar faucibus semper quis ut arcu. Ut non nisl a mollis est efficitur vestibulum. Integer eget purus nec nulla mattis et accumsan ut magna libero. Morbi auctor iaculis porttitor. Sed ut magna ac risus et hendrerit scelerisque. Praesent eleifend lacus in lectus aliquam porta. Cras eu ornare dui curabitur lacinia.</p>
-								<footer class="major">
-									<ul class="actions special">
-										<li><a href="generic.html" class="button">Learn More</a></li>
-									</ul>
-								</footer>
-							</section>
+	<!-- Nav -->
+		<nav id="nav">
+			<ul>
+				<li><a href="#intro" class="active">관급및 민강공사[List]</a></li>
+				<li><a href="#intro2" class="active">공장 및 물류센터[List]</a></li>
+				<li><a href="#first">연혁/타임라인</a></li>
+				<li><a href="#second">시공사진및 설명</a></li>
+				<li><a href="#cta">공지사항/문의내용</a></li>
+			</ul>
+		</nav>
 
-						<!-- Get Started -->
-							<section id="cta" class="main special">
-								<header class="major">
-									<h2>Congue imperdiet</h2>
-									<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
-									posuere. Nulla massa urna, fermentum eget quam aliquet.</p>
-								</header>
-								<footer class="major">
-									<ul class="actions special">
-										<li><a href="generic.html" class="button primary">Get Started</a></li>
-										<li><a href="generic.html" class="button">Learn More</a></li>
-									</ul>
-								</footer>
-							</section>
-
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<h2>Aliquam sed mauris</h2>
-							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
-							<ul class="actions">
-								<li><a href="generic.html" class="button">Learn More</a></li>
-							</ul>
-						</section>
-						<section>
-							<h2>Etiam feugiat</h2>
-							<dl class="alt">
-								<dt>Address</dt>
-								<dd>1234 Somewhere Road &bull; Nashville, TN 00000 &bull; USA</dd>
-								<dt>Phone</dt>
-								<dd>(000) 000-0000 x 0000</dd>
-								<dt>Email</dt>
-								<dd><a href="#">information@untitled.tld</a></dd>
-							</dl>
-							<ul class="icons">
-								<li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
-								<li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
-								<li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
-								<li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
-								<li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
-							</ul>
-						</section>
-						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-					</footer>
-
+	<!-- Main -->
+		<div id="main">
+		<!-- Introduction -->
+			<section id="intro" class="main">
+				<div class="box" style="background: #cce5ff">
+					<div class="content">
+					<h3>관급및 민강공사 추가</h3>
+					<form action="/addCoperration1" class="was-validated" method="post" > 
+						<div class="form-group">
+							<label for="qnaTitle">발주처:</label> 
+							<input type="text" class="form-control" id="corperrationPlace" placeholder="발주처 입력" name="corperrationPlace" required>
+						</div>
+						<div class="form-group">
+							<label for="qnaTitle">공사명:</label> 
+							<input type="text" class="form-control" id="corperrationName" placeholder="공사명 입력" name="corperrationName" required>
+						</div>
+						<div class="form-group">
+							<label for="qnaTitle">공사기간:</label> 
+							<input type="text" class="form-control" id="corperrationDate" placeholder="공사기간 입력" name="corperrationDate" required>
+						</div>
+						<div class="form-group">
+							<label for="qnaTitle">도급금액:</label> 
+							<input type="text" class="form-control" id="corperrationPrice" placeholder="도급금액 입력" name="corperrationPrice" required>
+						</div>
+						<button id="addButton" type="submit" class="btn btn-primary" style="background-color: #B5B2FF;">입력</button>
+					</form>
+					
+			  	 	<table>
+			  	 	<h3>관급및 민간공사</h3>
+					  <tr>
+					    <th align="center">번호</th>
+					    <th align="center">발주처</th>
+					    <th align="center">공사명</th>
+					    <th align="center">공사기간</th>
+					    <th align="center">도급금액</th>
+					  </tr>
+					  
+						  <tr th:each="str:${map.list}">
+						    <td th:text="${str.corperrationNo}" style="color: black;">corperrationNo</td>
+						    <td th:text="${str.corperrationPlace}" style="color: black;">corperrationPlace</td>
+						    <td th:text="${str.corperrationName}" style="color: black;">corperrationName</td>
+						    <td th:text="${str.corperrationDate}" style="color: black;">corperrationDate</td>
+						    <td th:text="${str.corperrationPrice}" style="color: black;">corperrationPrice</td>
+						  </tr>
+					  
+					</table>
+			    </div>
+			    <a th:if="${map.currentPage > 1}" th:href="@{/adminIndex?(currentPage=${map.currentPage-1})}">이전</a>
+			    <a th:if="${map.currentPage < map.lastPage}" th:href="@{/adminIndex?(currentPage=${map.currentPage+1})}">다음</a>
+			    </div>	
+			    </section>			
+			    
+				<section id="intro2" class="main">
+				<div class="box" style="background: #cce5ff">
+					<div class="content">
+					<h3>관급및 민강공사 추가</h3>
+					<form action="/addCoperration2" class="was-validated" method="post" > 
+						<div class="form-group">
+							<label for="qnaTitle">발주처:</label> 
+							<input type="text" class="form-control" id="corperrationPlace" placeholder="발주처 입력" name="corperrationPlace" required>
+						</div>
+						<div class="form-group">
+							<label for="qnaTitle">공사명:</label> 
+							<input type="text" class="form-control" id="corperrationName" placeholder="공사명 입력" name="corperrationName" required>
+						</div>
+						<div class="form-group">
+							<label for="qnaTitle">공사기간:</label> 
+							<input type="text" class="form-control" id="corperrationDate" placeholder="공사기간 입력" name="corperrationDate" required>
+						</div>
+						<div class="form-group">
+							<label for="qnaTitle">도급금액:</label> 
+							<input type="text" class="form-control" id="corperrationPrice" placeholder="도급금액 입력" name="corperrationPrice" required>
+						</div>
+						<button id="addButton" type="submit" class="btn btn-primary" style="background-color: #B5B2FF;">입력</button>
+					</form>
+				<table>
+		  	 	<h3>공장 및 물류센터</h3>
+				  <tr>
+				    <th align="center">번호</th>
+				    <th align="center">발주처</th>
+				    <th align="center">공사명</th>
+				    <th align="center">공사기간</th>
+				    <th align="center">도급금액</th>
+				  </tr>
+				  
+					  <tr th:each="str1:${map1.list}">
+					    <td th:text="${str1.corperrationNo}" style="color: black;">corperrationNo</td>
+					    <td th:text="${str1.corperrationPlace}" style="color: black;">corperrationPlace</td>
+					    <td th:text="${str1.corperrationName}" style="color: black;">corperrationName</td>
+					    <td th:text="${str1.corperrationDate}" style="color: black;">corperrationDate</td>
+					    <td th:text="${str1.corperrationPrice}" style="color: black;">corperrationPrice</td>
+					  </tr>
+				</table>	
+			    <a th:if="${map1.currentPage > 1}" th:href="@{/adminIndex?(currentPage=${map1.currentPage-1})}">이전</a>
+			    <a th:if="${map1.currentPage < map1.lastPage}" th:href="@{/adminIndex?(currentPage=${map1.currentPage+1})}">다음</a>
+			    </div>
+			    </div>
+			   
+					
+		</section>
+				
+		<!-- First Section  타임라인-->
+		<section id="first" class="main special">
+			<div class="box" style="background: #cce5ff" >
+				<div class="image fit">
+				<img src="images/801.jpg" height="400px" alt="" />
+				</div>
+				
+				<ul>
+				  <li class="timeline-event" th:each="str:${timeline}">
+				    <label class="timeline-event-icon"></label>
+				    <div class="timeline-event-copy">
+				      <p class="timeline-event-thumbnail" th:text="${str.timelineDate}"></p>
+				      <h4 th:text="${str.timelineContent}"></h4>
+				     </div>				
+				  </li> 
+				</ul>
 			</div>
+			
+		</section>
+		
+		
+		<!-- Second Section -->
+		<section id="second" class="main special">
+			
+		</section>
+		
+		<!-- Get Started -->
+		<section id="cta" class="main special">
+			
+		</section>
+	</div>
+</div>
+<!-- Scripts -->
+		<script src="assets1/js/jquery.min.js"></script>
+		<script src="assets1/js/jquery.scrollex.min.js"></script>
+		<script src="assets1/js/jquery.scrolly.min.js"></script>
+		<script src="assets1/js/browser.min.js"></script>
+		<script src="assets1/js/breakpoints.min.js"></script>
+		<script src="assets1/js/util.js"></script>
+		<script src="assets1/js/main.js"></script>
 
-		<!-- Scripts -->
-			<script src="assets1/js/jquery.min.js"></script>
-			<script src="assets1/js/jquery.scrollex.min.js"></script>
-			<script src="assets1/js/jquery.scrolly.min.js"></script>
-			<script src="assets1/js/browser.min.js"></script>
-			<script src="assets1/js/breakpoints.min.js"></script>
-			<script src="assets1/js/util.js"></script>
-			<script src="assets1/js/main.js"></script>
-
-	</body>
+</body>
 </html>

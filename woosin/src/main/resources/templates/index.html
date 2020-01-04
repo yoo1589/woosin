@@ -18,8 +18,16 @@
       font-family: "Nanum Gothic", sans-serif;
       font-size: 23px;
     }
-
+    	::-webkit-scrollbar{width: 16px;}
+		::-webkit-scrollbar-track {background-color:#ABABAB;}
+		::-webkit-scrollbar-thumb {background-color:#191919;border-radius: 10px;}
+		::-webkit-scrollbar-thumb:hover {background: #555;}
+		::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+		width:16px;height:16px;background:#ABABAB;} 
 </style>
+    <div class="scrollbar" id="style-2">
+      <div class="force-overflow"></div>
+    </div>
 	<body>
 			
 		<!-- Header -->
