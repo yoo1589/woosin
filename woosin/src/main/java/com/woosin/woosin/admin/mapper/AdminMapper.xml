@@ -4,7 +4,33 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="com.woosin.woosin.admin.mapper.AdminMapper">
-
+	<!-- 가맹점 pc사양 입력 -->
+	<insert id="insertFranchiseeSpec" parameterType="com.woosin.woosin.admin.vo.FranchiseeSpec">
+	   INSERT INTO franchisee_spec(
+	      pic_title,
+	      pic_content
+	   ) VALUES (
+	      #{picTitle},
+	      #{picContent}
+	   )
+	</insert>
+	
+	<!-- 가맹점 사진 입력 -->
+	<insert id="insertFranchiseePic" parameterType="com.woosin.woosin.admin.vo.FranchiseePic">
+	   INSERT INTO franchisee_pic (
+	      file_name,
+	      extension,
+	      content_type,
+	      size,
+	      origin_name
+	   ) VALUES(
+	      #{fileName},
+	      #{extension},
+	      #{contentType},
+	      #{size},
+	      #{originName}
+	   ) 
+	</insert>
 	<!-- 페이징 용도 -->
 	<select id="selectCummunityCount" resultType="int" parameterType="string">
 		SELECT COUNT(*)
@@ -62,6 +88,19 @@
 		WHERE corperration_no = #{corperrationNo}
     </delete>
     
+	<!-- 게시글 등록 -->
+	<insert id="insertTitle" parameterType="com.woosin.woosin.admin.vo.Franchisee">
+		INSERT INTO franchisee(
+		franchisee_name,
+		franchisee_title,
+		franchisee_date
+		) VALUES (
+		"관리자",
+		#{franchiseeTitle},
+		#{franchiseeDate}
+		)
+	</insert>
+	    
 	<!-- 공지사항 등록 -->
 	<insert id="insertCommunity2" parameterType="com.woosin.woosin.customer.vo.Community2">
 		INSERT INTO community2(
@@ -122,6 +161,26 @@
 		)
 	</insert>
 	
+	<!-- 페이징 용도 -->
+	<select id="selectTitleCount" resultType="int" parameterType="string">
+		SELECT COUNT(*)
+		FROM franchisee
+	</select>
+
+	
+	<!-- 게시글 리스트 -->
+	<select id="selectTitle"
+	      resultType="com.woosin.woosin.admin.vo.Franchisee"
+	      parameterType="com.woosin.woosin.customer.vo.CoperrationWoosinPage2">     
+	   SELECT 
+	   		franchisee_no as franchiseeNo,
+			franchisee_name as franchiseeName,
+			franchisee_title as franchiseeTitle,
+			franchisee_date as franchiseeDate
+	   FROM franchisee
+	   LIMIT #{beginRow}, #{rowPerPage}
+	</select>
+		
 	<!-- 공지사항 리스트 -->
 	<select id="selectCommunity2List"
 	      resultType="com.woosin.woosin.customer.vo.Community2">     

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.woosin.woosin.admin.vo.FranchiseeInfoForm;
 import com.woosin.woosin.customer.service.CustomerService;
 import com.woosin.woosin.customer.vo.Community;
 import com.woosin.woosin.customer.vo.LoginForm;
@@ -22,6 +23,7 @@ import com.woosin.woosin.customer.vo.Timeline;
 @Controller
 public class CustomerController {
 	@Autowired CustomerService customerService;
+	
 	
     @PostMapping("/login")
     public String login(HttpSession session, LoginForm loginForm) {
@@ -68,7 +70,7 @@ public class CustomerController {
     public String QnAFranchisee(Community community) {
 		customerService.addCommunity(community);
 		System.out.println("커뮤니티 컨트롤러"+community);
-        return "redirect:/Community";
+        return "redirect:/index";
 	}
 	
 	// 주요사업 내용

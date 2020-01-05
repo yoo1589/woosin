@@ -217,6 +217,7 @@ width:16px;height:16px;background:##B2EBF4;}
 				    <th align="center">공사명</th>
 				    <th align="center">공사기간</th>
 				    <th align="center">도급금액</th>
+				    <th align="center">삭제</th>
 				  </tr>
 				  
 					  <tr th:each="str1:${map1.list}">
@@ -272,10 +273,41 @@ width:16px;height:16px;background:##B2EBF4;}
 		
 		
 		<!-- Second Section -->
-		<section id="second" class="main special">
-			
-		</section>
 		
+		<section id="second" class="main special">
+			<div class="box" style="background: #cce5ff">
+		 		<div class="content">	
+				<h3>공사실적 추가</h3>
+				<form action="/addTitle" class="was-validated" method="post" > 
+					<div class="form-group">
+						<div class="form-group">
+							<label for="timelineDate">날짜:</label> 
+							<input type="date" class="form-control" id="franchiseeDate" placeholder="날짜 입력" name="franchiseeDate" required>
+						</div>
+						<label for="corperrationPlace">발주처:</label> 
+						<input type="text" class="form-control" id="franchiseeTitle" placeholder="게시글 제목입력" name="franchiseeTitle" required>
+					</div>
+				<button id="addButton3" type="submit" class="btn btn-primary" style="background-color: #B5B2FF;">입력</button>
+				</form>		 		
+		 		
+					<table>
+			  	 	<h3>공사실적 사진 게시판</h3>
+				
+					  <tr th:each="str5:${map5.list}">
+					    <td th:text="${str5.franchiseeNo}" style="color: black;"></td>
+					    <td th:text="${str5.franchiseeTitle}" style="color: black;"></td>
+					    <td th:text="${str5.franchiseeDate}" style="color: black;"></td>
+					    <td><a href="#" th:href="@{/datileAdmin?(franchiseeNo=${str5.franchiseeNo})}" class="btn btn-primary">정보입력</a></td>
+					    <td><a href="#" th:href="@{/deleteCummnity?(franchiseeNo=${str5.franchiseeNo})}" class="btn btn-primary">삭제</a></td>
+					  </tr>
+					  
+					</table>
+				    <a th:if="${map5.currentPage > 1}" th:href="@{/adminIndex?(currentPage=${map5.currentPage-1})}">이전</a>
+				    <a th:if="${map5.currentPage < map5.lastPage}" th:href="@{/adminIndex?(currentPage=${map5.currentPage+1})}">다음</a>   
+			    </div> 
+			</div> 		
+		</section>
+
 		<!-- 커뮤니티 -->
 		<section id="cta" class="main special">
 			<div class="box" style="background: #cce5ff">

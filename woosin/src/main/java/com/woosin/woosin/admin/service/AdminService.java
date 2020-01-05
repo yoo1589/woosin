@@ -3,11 +3,15 @@ package com.woosin.woosin.admin.service;
 import java.util.List;
 import java.util.Map;
 
+import com.woosin.woosin.admin.vo.Franchisee;
+import com.woosin.woosin.admin.vo.FranchiseeInfoForm;
 import com.woosin.woosin.customer.vo.Community2;
 import com.woosin.woosin.customer.vo.CoperrationWoosin;
 import com.woosin.woosin.customer.vo.Timeline;
 
 public interface AdminService {
+	// 가맹점 정보 입력
+	public int addFranchiseeInfo(FranchiseeInfoForm FranchiseeInfoForm);
 	// 공지사항 리스트 삭제
 	public int deleteCummnity2(int communityNo);		
 	// 문의 리스트 삭제
@@ -18,6 +22,8 @@ public interface AdminService {
 	public int deleteCorperration2(int corperrationNo);	
 	// 민간공사 삭제
 	public int deleteCorperration(int corperrationNo);
+	// 게시글 추가
+	public int addTitle(Franchisee franchisee);	
 	// 공지사항 추가
 	public int addCommunity2(Community2 community2);	
 	// 타임라인/연혁 추가
@@ -25,7 +31,9 @@ public interface AdminService {
 	// 공장,물류센터 추가
 	public int addCoperration2(CoperrationWoosin coperrationWoosin);		
 	// 민간공사 추가
-	public int addCoperration1(CoperrationWoosin coperrationWoosin);	
+	public int addCoperration1(CoperrationWoosin coperrationWoosin);
+	// 공지사항 리스트
+	public Map<String, Object> getTitle(int currentPage, int rowPerPage);	
 	// 공지사항 리스트
 	public List<Community2> getCommunity2List();	
 	// 연혁/타임라인 리스트
