@@ -153,7 +153,7 @@ width:16px;height:16px;background:##B2EBF4;}
 						</div>
 						<div class="form-group">
 							<label for="corperrationPrice">도급금액:</label> 
-							<input type="text" class="form-control" id="corperrationPrice" placeholder="도급금액 입력" name="corperrationPrice" required>
+							<input type="text" class="form-control" id="corperrationPrice" placeholder="도급금액 입력<숫자만 입력>" name="corperrationPrice" required>
 						</div>
 						<button id="addButton" type="submit" class="btn btn-primary" style="background-color: #B5B2FF;">입력</button>
 					</form>
@@ -182,7 +182,8 @@ width:16px;height:16px;background:##B2EBF4;}
 			    </div>
 			    <a th:if="${map.currentPage > 1}" th:href="@{/adminIndex?(currentPage=${map.currentPage-1})}">이전</a>
 			    <a th:if="${map.currentPage < map.lastPage}" th:href="@{/adminIndex?(currentPage=${map.currentPage+1})}">다음</a>
-			    </div>	
+			    </div>
+			    	
 			    </section>			
 			    
 				<section id="intro2" class="main">
@@ -204,7 +205,7 @@ width:16px;height:16px;background:##B2EBF4;}
 						</div>
 						<div class="form-group">
 							<label for="corperrationPrice">도급금액:</label> 
-							<input type="text" class="form-control" id="corperrationPrice" placeholder="도급금액 입력" name="corperrationPrice" required>
+							<input type="text" class="form-control" id="corperrationPrice" placeholder="도급금액 입력<숫자만 입력>" name="corperrationPrice" required>
 						</div>
 						<button id="addButton" type="submit" class="btn btn-primary" style="background-color: #B5B2FF;">입력</button>
 					</form>
@@ -251,10 +252,9 @@ width:16px;height:16px;background:##B2EBF4;}
 							<label for="timelineContent">연혁 내용:</label> 
 							<input type="text" class="form-control" id="timelineContent" placeholder="연혁 입력" name="timelineContent" required>
 						</div>
-						
 						<button id="addButton" type="submit" class="btn btn-primary" style="background-color: #B5B2FF;">입력</button>
 					</form>
-				<ul>
+			
 				  <li class="timeline-event" th:each="str:${timeline}">
 				    <label class="timeline-event-icon"></label>
 				    <div class="timeline-event-copy">
@@ -265,7 +265,7 @@ width:16px;height:16px;background:##B2EBF4;}
 				      
 				     </div>				
 				  </li> 
-				</ul>
+			
 			</div>
 			
 		</section>
@@ -276,10 +276,83 @@ width:16px;height:16px;background:##B2EBF4;}
 			
 		</section>
 		
-		<!-- Get Started -->
+		<!-- 커뮤니티 -->
 		<section id="cta" class="main special">
+			<div class="box" style="background: #cce5ff">
+		 		<div class="content">
+		 				
+					<table>
+			  	 	<h3>문의 내용 리스트 [수동 메일 답변]</h3>
+					  <tr>
+					    <th align="center">No</th>
+					    <th align="center">ID</th>
+					    <th align="center">Email</th>
+					    <th align="center">Title</th>
+					    <th align="center">Content</th>
+					    <th align="center">Date</th>
+					    <th align="center">삭제</th>
+					  </tr>
+					  
+						  <tr th:each="str3:${map3.list}">
+						    <td th:text="${str3.communityNo}" style="color: black;">corperrationNo</td>
+						    <td th:text="${str3.name}" style="color: black;">corperrationPlace</td>
+						    <td th:text="${str3.Email}" style="color: black;">corperrationName</td>
+						    <td th:text="${str3.dept}" style="color: black;">corperrationDate</td>
+						    <td th:text="${str3.message}" style="color: black;">corperrationPrice</td>
+						    <td th:text="${str3.communityDate}" style="color: black;">corperrationPrice</td>
+						    <td><a href="#" th:href="@{/deleteCummnity?(communityNo=${str3.communityNo})}" class="btn btn-primary">삭제</a></td>
+						  </tr>
+					</table>
+				    <a th:if="${map3.currentPage > 1}" th:href="@{/adminIndex?(currentPage=${map1.currentPage-1})}">이전</a>
+				    <a th:if="${map3.currentPage < map3.lastPage}" th:href="@{/adminIndex?(currentPage=${map1.currentPage+1})}">다음</a>
+			    	    
+			    </div> 
+			</div>  
 			
+			<div class="box" style="background: #cce5ff">
+					<div class="content">
+					<h3>공지사항 추가</h3>
+					<form action="/addCommunity2" class="was-validated" method="post" > 
+					
+						<div class="form-group">
+							<label for="corperrationPlace">제목:</label> 
+							<input type="text" class="form-control" id="corperrationPlace" placeholder="제목 입력" name="communityTitle" required>
+						</div>
+						
+						<div class="form-group">
+							<label for="corperrationName">내용:</label> 
+							<input type="text" class="form-control" id="corperrationName" placeholder="내용 입력" name="communityContent" required>
+						</div>
+						
+						<button id="addButton" type="submit" class="btn btn-primary" style="background-color: #B5B2FF;">입력</button>
+					</form>
+					
+			  	 	<table>
+			  	 	<h3>공지사항 리스트</h3>
+					  <tr>
+					    <th align="center">번호[자동 입력]</th>
+					    <th align="center">아이디[관리자 고정]</th>
+					    <th align="center">제목</th>
+					    <th align="center">내용</th>
+					    <th align="center">날짜[현재값]</th>
+					    <th align="center">삭제요청</th>
+					  </tr>
+					  
+						  <tr th:each="str4:${community2}">
+						    <td th:text="${str4.communityNo}" style="color: black;"></td>
+						    <td th:text="${str4.communityName}" style="color: black;"></td>
+						    <td th:text="${str4.communityTitle}" style="color: black;"></td>
+						    <td th:text="${str4.communityContent}" style="color: black;"></td>
+						    <td th:text="${str4.communityDate}" style="color: black;"></td>
+						    <td><a href="#" th:href="@{/deleteCommunity2?(communityNo=${str4.communityNo})}" class="btn btn-primary">삭제</a></td>
+						  </tr>
+					</table>
+			    </div>
+			    </div>
+			
+			   	
 		</section>
+		
 	</div>
 </div>
 <!-- Scripts -->

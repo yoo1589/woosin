@@ -7,6 +7,8 @@ import com.woosin.woosin.customer.vo.Community;
 import com.woosin.woosin.customer.vo.Timeline;
 
 public interface CustomerService {
+	// 공지사항 리스트
+	public Map<String, Object> getCommunity3(int currentPage, int rowPerPage);		
 	// 상담 리스트
 	public Map<String, Object> getCommunity2(int currentPage, int rowPerPage);		
 	// QnA 등록

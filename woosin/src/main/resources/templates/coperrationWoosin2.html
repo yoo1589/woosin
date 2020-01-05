@@ -176,15 +176,15 @@ button:hover:before,button:hover:after{
 					  </tr>
 					  
 						  <tr th:each="str:${map2.list}">
-						    <td th:text="${str.corperrationNo}" style="color: black;">corperrationNo</td>
-						    <td th:text="${str.corperrationPlace}" style="color: black;">corperrationPlace</td>
-						    <td th:text="${str.corperrationName}" style="color: black;">corperrationName</td>
-						    <td th:text="${str.corperrationDate}" style="color: black;">corperrationDate</td>
-						    <td th:text="${str.corperrationPrice}" style="color: black;">corperrationPrice</td>
+						    <td th:text="${str.corperrationNo}" style="color: #2E2E2E;">corperrationNo</td>
+						    <td th:text="${str.corperrationPlace}" style="color: #2E2E2E;">corperrationPlace</td>
+						    <td th:text="${str.corperrationName}" style="color: #2E2E2E;">corperrationName</td>
+						    <td th:text="${str.corperrationDate}" style="color: #2E2E2E;">corperrationDate</td>
+						    <td th:text="${str.corperrationPrice}" style="color: #2E2E2E;">corperrationPrice</td>
 						  </tr>
 					</table>	
-				    <a th:if="${map2.currentPage > 1}" th:href="@{/coperrationWoosin2?(currentPage=${map2.currentPage-1})}">이전</a>
-				    <a th:if="${map2.currentPage < map2.lastPage}" th:href="@{/coperrationWoosin2?(currentPage=${map2.currentPage+1})}">다음</a>
+				    <a class="button" th:if="${map2.currentPage > 1}" th:href="@{/coperrationWoosin2?(currentPage=${map2.currentPage-1})}">이전</a>
+				    <a class="button" th:if="${map2.currentPage < map2.lastPage}" th:href="@{/coperrationWoosin2?(currentPage=${map2.currentPage+1})}">다음</a>
 					
 			</div>
 	</section>

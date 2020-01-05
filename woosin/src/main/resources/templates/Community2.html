@@ -13,35 +13,7 @@
 	<link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <style>
-table {
-    border-collapse: collapse;
-    text-align: left;
-    line-height: 1.5;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    margin: 20px 10px;
-}
-table thead th {
-    width: 150px;
-    padding: 10px;
-    font-weight: bold;
-    vertical-align: top;
-    color: #fff;
-    background: #e7708d;
-    margin: 20px 10px;
-}
-table tbody th {
-    width: 150px;
-    padding: 10px;
-}
-table td {
-    width: 350px;
-    padding: 10px;
-    vertical-align: top;
-}
-table .even {
-    background: #fdf3f5;
-}
+
 th,td{
 font-family: "Nanum Gothic", sans-serif;
 font-size: 18px;
@@ -176,7 +148,7 @@ button:hover:before,button:hover:after{
 		  <a href="#"></a>
 		  <a href="#"></a>
 		  <a href="#"></a>
-		   <a href="#"></a>
+		  <a href="#"></a>
 		  <a href="#"></a>
 		  <a href="#"></a>
 		  <a href="#"></a>
@@ -201,24 +173,26 @@ button:hover:before,button:hover:after{
 		  	 	<table>
 		  	 	<h3>문의 리스트</h3>
 				  <tr>
-				    <th align="center">상담 번호</th>
-				    <th align="center">제목</th>
+				    <th style="width: 100px;">상담 번호</th>
+				    <th style="width: 170px;">ID</th>
+				    <th style="width: 750px;">제목</th>
+				    <th align="center">날짜</th>
 				  </tr>
 				  
 					  <tr th:each="str:${map.list}">
 					    <td th:text="${str.communityNo}" style="width: 10px; color: black;">corperrationNo</td>
 					    <td th:text="${str.name}" style="color: black;">corperrationPlace</td>
+ 						<td th:text="${str.dept}" style="color: black;">corperrationPlace</td>
+ 						<td th:text="${str.communityDate}" style="color: black;">corperrationPlace</td>
 					  </tr>
 				  
 				</table>
 		    </div>
-		    <a th:if="${map.currentPage > 1}" th:href="@{/Community2?(currentPage=${map.currentPage-1})}">이전</a>
-		    <a th:if="${map.currentPage < map.lastPage}" th:href="@{/Community2?(currentPage=${map.currentPage+1})}">다음</a>
+		    <a class="button" th:if="${map.currentPage > 1}" th:href="@{/Community2?(currentPage=${map.currentPage-1})}">이전</a>
+		    <a class="button" th:if="${map.currentPage < map.lastPage}" th:href="@{/Community2?(currentPage=${map.currentPage+1})}">다음</a>
 			</div>
-			
 		</div>
-	</section>
-	
+		</section>
 
 			
 			<!-- Four -->

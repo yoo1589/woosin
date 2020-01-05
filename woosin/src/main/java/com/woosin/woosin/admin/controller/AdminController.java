@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.woosin.woosin.admin.service.AdminService;
+import com.woosin.woosin.customer.vo.Community2;
 import com.woosin.woosin.customer.vo.CoperrationWoosin;
 import com.woosin.woosin.customer.vo.Timeline;
 
@@ -20,6 +21,13 @@ import com.woosin.woosin.customer.vo.Timeline;
 public class AdminController {
 	@Autowired AdminService adminService;
 	
+	// 문의 리스트 삭제
+	@GetMapping("/deleteCummnity")
+    public String deleteCummnity(
+    	@RequestParam(value="communityNo") int communityNo) {
+		adminService.deleteCummnity(communityNo);
+        return "redirect:/adminIndex";
+	}	
 	
 	// 연혁 리스트 삭제
 	@GetMapping("/deleteCorperration3")
@@ -81,11 +89,18 @@ public class AdminController {
 	model.addAttribute("map1", map1);
 	System.out.println("222222222222222"+map1);	
 	
+	// 고객문의 get요청
+	Map<String, Object> map3 = adminService.getCummunity(currentPage, rowPerPage);		
+	model.addAttribute("map3", map3);
+	System.out.println("222222222222222"+map3);
+	// 연혁리스트 페이징 x
 	List<Timeline> timeline = adminService.getTimelineList();
 	System.out.println("timeline "+timeline);
 	System.out.println("timeline 컨트롤러 호출");
 	model.addAttribute("timeline", timeline);
-	
+	// 공지사항 리스트 페이징 x
+	List<Community2> community2 = adminService.getCommunity2List();
+	model.addAttribute("community2", community2);
     return "adminIndex";
 	}
 	

@@ -17,6 +17,18 @@ import com.woosin.woosin.customer.vo.Timeline;
 @Controller
 public class CustomerController {
 	@Autowired CustomerService customerService;
+	// 공지사항 리스트
+	@GetMapping("/Community3")
+	public String Community3(Model model, 
+								@RequestParam(value="currentPage", defaultValue="1") int currentPage
+								){
+		int rowPerPage = 10;
+		Map<String, Object> map = customerService.getCommunity3(currentPage, rowPerPage);		
+		model.addAttribute("map", map);
+		System.out.println(map);
+		return "Community3";
+	}
+	
 	// 상담 리스트
 	@GetMapping("/Community2")
 	public String Community2(Model model, 

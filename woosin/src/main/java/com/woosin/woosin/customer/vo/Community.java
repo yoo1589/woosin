@@ -8,5 +8,6 @@ public class Community {
 	private String name;
 	private String Email;
 	private String dept;
-	private String message;	
+	private String message;
+	private String communityDate;
 }

@@ -5,6 +5,35 @@
  
 <mapper namespace="com.woosin.woosin.admin.mapper.AdminMapper">
 
+	<!-- 페이징 용도 -->
+	<select id="selectCummunityCount" resultType="int" parameterType="string">
+		SELECT COUNT(*)
+		FROM community
+	</select>
+	
+	<!-- 물류센터 리스트 출력 -->
+	<select id="selectCummunityList"
+	      resultType="com.woosin.woosin.customer.vo.Community"
+	      parameterType="com.woosin.woosin.customer.vo.CoperrationWoosinPage2">
+	      
+	   SELECT 
+			community_no as communityNo,
+			community_name as name,
+			Email,
+			dept,
+			message,
+			community_date as communityDate
+	   FROM community
+	   LIMIT #{beginRow}, #{rowPerPage}
+	</select>
+	
+	<!--문의 리스트 삭제 -->
+	<delete id="removeCummnity" parameterType="int">
+      DELETE
+		FROM community
+		WHERE community_no = #{communityNo}
+    </delete>
+    	
 	<!--연혁 리스트 삭제 -->
 	<delete id="removeCorperration3" parameterType="int">
       DELETE
@@ -71,6 +100,20 @@
 		)
 	</insert>
 	
+	<!-- 공지사항 리스트 -->
+	<select id="selectCommunity2List"
+	      resultType="com.woosin.woosin.customer.vo.Community2">     
+	   SELECT 
+			community_no as communityNo,
+			community_name as communityName,
+			community_title as communityTitle,
+			community_content as communityContent,
+			community_date as communityDate
+	   FROM community2
+	   
+	   ORDER BY communityNo DESC
+	</select>
+		
 	<!-- 연혁/타임라인 리스트 -->
 	<select id="selectTimelineList"
 	      resultType="com.woosin.woosin.customer.vo.Timeline">    

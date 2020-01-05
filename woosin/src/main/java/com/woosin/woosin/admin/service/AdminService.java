@@ -3,10 +3,13 @@ package com.woosin.woosin.admin.service;
 import java.util.List;
 import java.util.Map;
 
+import com.woosin.woosin.customer.vo.Community2;
 import com.woosin.woosin.customer.vo.CoperrationWoosin;
 import com.woosin.woosin.customer.vo.Timeline;
 
 public interface AdminService {
+	// 문의 리스트 삭제
+	public int deleteCummnity(int communityNo);		
 	// 연혁 리스트 삭제
 	public int deleteCorperration3(int timelineNo);		
 	// 물류센터 삭제
@@ -19,8 +22,12 @@ public interface AdminService {
 	public int addCoperration2(CoperrationWoosin coperrationWoosin);		
 	// 민간공사 추가
 	public int addCoperration1(CoperrationWoosin coperrationWoosin);	
+	// 공지사항 리스트
+	public List<Community2> getCommunity2List();	
 	// 연혁/타임라인 리스트
 	public List<Timeline> getTimelineList();
+	// 문의내용 리스트
+	public Map<String, Object> getCummunity(int currentPage, int rowPerPage);
 	// 관급 민간 공사 리스트
 	public Map<String, Object> getCoperration(int currentPage, int rowPerPage);
 	// 물류센터 공장 리스트

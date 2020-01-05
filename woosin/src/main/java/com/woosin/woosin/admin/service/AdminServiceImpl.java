@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.woosin.woosin.admin.mapper.AdminMapper;
+import com.woosin.woosin.customer.vo.Community;
+import com.woosin.woosin.customer.vo.Community2;
 import com.woosin.woosin.customer.vo.CoperrationWoosin;
 import com.woosin.woosin.customer.vo.CoperrationWoosin2;
 import com.woosin.woosin.customer.vo.CoperrationWoosinPage;
@@ -20,6 +22,40 @@ import com.woosin.woosin.customer.vo.Timeline;
 @Transactional
 public class AdminServiceImpl implements AdminService{
 @Autowired AdminMapper adminMapper;
+	// 공지사항 리스트확인
+	@Override
+	public Map<String, Object> getCummunity(int currentPage, int rowPerPage) {
+	
+		// 페이징 코드
+		// Mapper로 페이징 정보를 넘기기 위해 VO에 값 저장
+		CoperrationWoosinPage2 coperrationWoosinPage2 = new CoperrationWoosinPage2();
+		coperrationWoosinPage2.setRowPerPage(rowPerPage);
+		coperrationWoosinPage2.setBeginRow((currentPage-1)*rowPerPage);
+		
+		List<Community> cummunityCountPageList = adminMapper.selectCummunityList(coperrationWoosinPage2);
+	
+		// 페이징 버튼을 위한 마지막 페이지 계산
+		int totalRowCount = adminMapper.selectCummunityCount();
+		int lastPage = 0;
+		if(totalRowCount % rowPerPage == 0) {
+			lastPage = totalRowCount / rowPerPage;
+		} else {
+			lastPage = totalRowCount / rowPerPage + 1;
+		}
+		System.out.println(cummunityCountPageList);
+		// 페이징한 리스트와 현재 페이지 정보를 맵에 저장하여 리턴
+		Map<String, Object> map3 = new HashMap<String, Object>();
+		map3.put("list", cummunityCountPageList);
+		map3.put("currentPage", currentPage);
+		map3.put("totalRowCount", totalRowCount);
+		map3.put("lastPage", lastPage);
+		return map3;
+		}
+	// 문의 리스트 삭제
+	@Override
+	public int deleteCummnity(int communityNo) {		
+		return adminMapper.removeCummnity(communityNo);
+	}
 	// 연혁 리스트 삭제
 	@Override
 	public int deleteCorperration3(int timelineNo) {		
@@ -51,6 +87,12 @@ public class AdminServiceImpl implements AdminService{
 		return adminMapper.insertCoperrationWoosin(coperrationWoosin);
 	}
 
+	// 공지사항 리스트 확인
+	@Override
+	public List<Community2> getCommunity2List() {
+		return adminMapper.selectCommunity2List();
+	}
+	
 	// 타임라인/연혁 리스트 확인
 	@Override
 	public List<Timeline> getTimelineList() {

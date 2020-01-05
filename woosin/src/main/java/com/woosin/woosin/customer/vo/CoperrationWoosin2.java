@@ -9,5 +9,5 @@ public class CoperrationWoosin2 {
 	private String corperrationPlace;
 	private String corperrationName;
 	private String corperrationDate;
-	private int corperrationPrice;
+	private String corperrationPrice;
 }

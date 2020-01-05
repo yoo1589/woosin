@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.woosin.woosin.customer.mapper.CustomerMapper;
 import com.woosin.woosin.customer.vo.Community;
+import com.woosin.woosin.customer.vo.Community2;
 import com.woosin.woosin.customer.vo.CoperrationWoosin;
 import com.woosin.woosin.customer.vo.CoperrationWoosin2;
 import com.woosin.woosin.customer.vo.CoperrationWoosin3;
@@ -22,6 +23,34 @@ import com.woosin.woosin.customer.vo.Timeline;
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
 @Autowired CustomerMapper customerMapper;
+	@Override
+	public Map<String, Object> getCommunity3(int currentPage, int rowPerPage) {
+		
+		// 페이징 코드
+		// Mapper로 페이징 정보를 넘기기 위해 VO에 값 저장
+		CoperrationWoosinPage2 coperrationWoosinPage2 = new CoperrationWoosinPage2();
+		coperrationWoosinPage2.setRowPerPage(rowPerPage);
+		coperrationWoosinPage2.setBeginRow((currentPage-1)*rowPerPage);
+		
+		List<Community2> getCommunity3 = customerMapper.selectCommunity3(coperrationWoosinPage2);
+	
+		// 페이징 버튼을 위한 마지막 페이지 계산
+		int totalRowCount = customerMapper.selectCommunityPageCount3();
+		int lastPage = 0;
+		if(totalRowCount % rowPerPage == 0) {
+			lastPage = totalRowCount / rowPerPage;
+		} else {
+			lastPage = totalRowCount / rowPerPage + 1;
+		}
+		System.out.println(getCommunity3);
+		// 페이징한 리스트와 현재 페이지 정보를 맵에 저장하여 리턴
+		Map<String, Object> map2 = new HashMap<String, Object>();
+		map2.put("list", getCommunity3);
+		map2.put("currentPage", currentPage);
+		map2.put("totalRowCount", totalRowCount);
+		map2.put("lastPage", lastPage);
+		return map2;
+	}
 
 	@Override
 	public Map<String, Object> getCommunity2(int currentPage, int rowPerPage) {
