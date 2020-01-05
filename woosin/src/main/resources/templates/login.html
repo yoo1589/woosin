@@ -4,7 +4,7 @@
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
 <head>
 	<title>Generic - Transitive by TEMPLATED</title>
@@ -12,74 +12,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 </head>
-<style>
+ <style>
+     p,h3,li,a{
+       font-family: "Nanum Gothic", sans-serif;
+       font-size: 23px;
+     }
 
-th,td{
-font-family: "Nanum Gothic", sans-serif;
-font-size: 18px;
-font-weight: bold ;
-}
-/* Style the top navigation bar */
-.topnav {
-  overflow: hidden;
-
-}
-
-/* Style the topnav links */
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change color on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
- p,h3,li,a,label{
-      font-family: "Nanum Gothic", sans-serif;
-      font-size: 22px;
-}
-button{
-  background:#1AAB8A;
-  color:#fff;
-  border:none;
-  position:relative;
-  height:68px;
-  font-size:1.6em;
-  padding:0 2em;
-  cursor:pointer;
-  transition:800ms ease all;
-  outline:none;
-}
-button:hover{
-  background:#fff;
-  color:#1AAB8A;
-}
-button:before,button:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
-  background: #1AAB8A;
-  transition:400ms ease all;
-}
-button:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
-}
-button:hover:before,button:hover:after{
-  width:100%;
-  transition:800ms ease all;
-}
 </style>
 	<body class="subpage">
 	
@@ -98,7 +36,7 @@ button:hover:before,button:hover:after{
 					<li><a href="coperrationWoosin">주요실적</a></li>
 					<li><a href="elements.html">공사이미지</a></li>
 					<li><a href="registrationWoosin">인증/보유</a></li>
-					<li><a href="elements.html">커뮤니티</a></li>
+					<li><a href="Community">커뮤니티</a></li>
 				</ul>
 			</nav>
 	<!-- Two -->
@@ -141,63 +79,30 @@ button:hover:before,button:hover:after{
 			</section>	
 	
 		<!-- One -->
-	<section id="one" class="wrapper style2">
-		<div class="inner">
-		
-		<div class="topnav">
-		  <a href="#"></a>
-		  <a href="#"></a>
-		  <a href="#"></a>
-		  <a href="#"></a>
-		  <a href="#"></a>
-		  <a href="#"></a>
-		  <a href="#"></a>
-		  <a href="#"></a>
-		  <a href="#"></a>
-		  <a href="#"></a>
-		  <a href="#"></a>
-		  <button onclick = "location.href = '/Community3'">공지사항</button>
-		  <button onclick = "location.href = '/Community2'">상담실</button>
-		  <button onclick = "location.href = '/Community'">1:1 문의하기</button>	
-		  <br>
-		  <br>
-
-		</div>
-		<!-- content -->
-		
-		<div class="box">
-		<div class="image fit">
-			<img src="images/906.jpg" height="400" alt="" />
-		</div>
-		<div class="content">
-			<header class="align-center">
-				<h2>상담실</h2>
-			</header>
-			<hr />	 	
-		  	 	<table>
-		  	 	<h3>문의 리스트</h3>
-				  <tr>
-				    <th style="width: 100px;">상담 번호</th>
-				    <th style="width: 170px;">ID</th>
-				    <th style="width: 750px;">제목</th>
-				    <th align="center">날짜</th>
-				  </tr>
-				  
-					  <tr th:each="str:${map.list}">
-					    <td th:text="${str.communityNo}" style="width: 10px; color: black;">corperrationNo</td>
-					    <td th:text="${str.name}" style="color: black;">corperrationPlace</td>
- 						<td th:text="${str.dept}" style="color: black;">corperrationPlace</td>
- 						<td th:text="${str.communityDate}" style="color: black;">corperrationPlace</td>
-					  </tr>
-				  
-				</table>
-		    </div>
-		    <a class="button" th:if="${map.currentPage > 1}" th:href="@{/Community2?(currentPage=${map.currentPage-1})}">이전</a>
-		    <a class="button" th:if="${map.currentPage < map.lastPage}" th:href="@{/Community2?(currentPage=${map.currentPage+1})}">다음</a>
+		<section id="one" class="wrapper style2">
+			<div class="inner">
+				<div class="box">
+					<div class="image fit">
+						<img src="images/1004.jpg" height="400px" alt="" />
+					</div>
+					<div class="card-body">
+						<form class="form-signin" method="POST" onSubmit="logincall();return false" action="/login">
+							<h5 class="form-signin-heading">로그인 정보를 입력하세요</h5>
+							<label for="inputEmail" class="sr-only">Your ID</label> 
+							<input type="text" id="id" class="form-control" placeholder="Your ID" name="id" required autofocus><BR> 
+							<label for="inputPassword" class="sr-only">Password</label> 
+							<input type="password" id="pw" class="form-control" placeholder="Password" name="pw" required><br>
+							<div class="checkbox"></div>
+							<button id="btn-Yes" class="btn btn-primary" type="submit">로 그 인</button>
+						</form>
+					</div>						
+	
+				</div>
 			</div>
-		</div>
 		</section>
-		<a href="/login" style="font-size: 2px">관리자 로그인</a>	
+	
+
+			
 			<!-- Four -->
 			<section id="four" class="wrapper style3">
 				<div class="inner">

@@ -1,7 +1,10 @@
 package com.woosin.woosin.customer.controller;
 
+
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,11 +15,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.woosin.woosin.customer.service.CustomerService;
 import com.woosin.woosin.customer.vo.Community;
+import com.woosin.woosin.customer.vo.LoginForm;
+import com.woosin.woosin.customer.vo.Member;
 import com.woosin.woosin.customer.vo.Timeline;
 
 @Controller
 public class CustomerController {
 	@Autowired CustomerService customerService;
+	
+    @PostMapping("/login")
+    public String login(HttpSession session, LoginForm loginForm) {
+    System.out.println("컨트롤러 요청");
+       Member member = customerService.getMemberOne(loginForm); 
+       if(member == null) {
+          return "redirect:/";
+       } 
+       session.setAttribute("id", member.getId());
+       return "redirect:/adminIndex";
+    }	
+	//어드민 인덱스
+	@GetMapping("/login")
+    public String login(){
+     return "login";
+	}	
+	
 	// 공지사항 리스트
 	@GetMapping("/Community3")
 	public String Community3(Model model, 

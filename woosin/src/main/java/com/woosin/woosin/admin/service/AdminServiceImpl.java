@@ -51,6 +51,11 @@ public class AdminServiceImpl implements AdminService{
 		map3.put("lastPage", lastPage);
 		return map3;
 		}
+	// 공지사항 리스트 삭제
+	@Override
+	public int deleteCummnity2(int communityNo) {		
+		return adminMapper.removeCummnity2(communityNo);
+	}
 	// 문의 리스트 삭제
 	@Override
 	public int deleteCummnity(int communityNo) {		
@@ -71,6 +76,11 @@ public class AdminServiceImpl implements AdminService{
 	public int deleteCorperration(int corperrationNo) {		
 		return adminMapper.removeCorperration(corperrationNo);
 	}
+	// 공지사항 리스트 추가
+	@Override
+	public int addCommunity2(Community2 community2) {		
+		return adminMapper.insertCommunity2(community2);
+	}	
 	// 연혁 리스트 추가
 	@Override
 	public int addTimeline(Timeline timeline) {		

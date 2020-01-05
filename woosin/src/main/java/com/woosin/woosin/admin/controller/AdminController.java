@@ -20,6 +20,13 @@ import com.woosin.woosin.customer.vo.Timeline;
 @Controller
 public class AdminController {
 	@Autowired AdminService adminService;
+	// 공지사항 리스트 삭제
+	@GetMapping("/deleteCommunity2")
+    public String deleteCommunity2(
+    	@RequestParam(value="communityNo") int communityNo) {
+		adminService.deleteCummnity2(communityNo);
+        return "redirect:/adminIndex";
+	}	
 	
 	// 문의 리스트 삭제
 	@GetMapping("/deleteCummnity")
@@ -53,6 +60,13 @@ public class AdminController {
         return "redirect:/adminIndex";
 	}	
 	
+	// add 공지사항
+	@PostMapping("/addCommunity2")
+    public String addCommunity2(Community2 community2) {
+		adminService.addCommunity2(community2);
+        return "redirect:/adminIndex";
+	}	
+	
 	// add 연혁
 	@PostMapping("/addTimeline")
     public String addTimeline(Timeline timeline) {
@@ -76,8 +90,13 @@ public class AdminController {
 	
 	//Admin index 요청
 	@GetMapping("/adminIndex")
-    public String adminIndex(Model model, 
+    public String adminIndex(Model model, HttpSession session,
 			@RequestParam(value="currentPage", defaultValue="1") int currentPage){
+		
+	if (session.getAttribute("id") == null) {
+	return "redirect:/";
+	}	
+	
 	//최대페이지	
 	int rowPerPage = 10;
 	// 물류공사 get요청

@@ -17,7 +17,9 @@ public interface AdminMapper {
 	// 페이징 용도
 	public int selectCummunityCount();
 	// 문의내용 리스트
-	public List<Community> selectCummunityList(CoperrationWoosinPage2 coperrationWoosinPage2);	
+	public List<Community> selectCummunityList(CoperrationWoosinPage2 coperrationWoosinPage2);
+	// 공지사항 리스트 삭제
+	public int removeCummnity2(int communityNo);		
 	// 문의 리스트 삭제
 	public int removeCummnity(int communityNo);		
 	// 연혁 리스트 삭제
@@ -25,7 +27,9 @@ public interface AdminMapper {
 	// 공장 리스트 삭제
 	public int removeCorperration2(int corperrationNo);		
 	// 민간 공사 삭제
-	public int removeCorperration(int corperrationNo);	
+	public int removeCorperration(int corperrationNo);
+	// 공지사항 추가
+	public int insertCommunity2(Community2 community2);	
 	// 타임라인 연혁 
 	public int insertTimeline(Timeline timeline);	
 	// 물류센터및 공장 등록 

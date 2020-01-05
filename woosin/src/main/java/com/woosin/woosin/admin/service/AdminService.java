@@ -8,6 +8,8 @@ import com.woosin.woosin.customer.vo.CoperrationWoosin;
 import com.woosin.woosin.customer.vo.Timeline;
 
 public interface AdminService {
+	// 공지사항 리스트 삭제
+	public int deleteCummnity2(int communityNo);		
 	// 문의 리스트 삭제
 	public int deleteCummnity(int communityNo);		
 	// 연혁 리스트 삭제
@@ -16,6 +18,8 @@ public interface AdminService {
 	public int deleteCorperration2(int corperrationNo);	
 	// 민간공사 삭제
 	public int deleteCorperration(int corperrationNo);
+	// 공지사항 추가
+	public int addCommunity2(Community2 community2);	
 	// 타임라인/연혁 추가
 	public int addTimeline(Timeline timeline);
 	// 공장,물류센터 추가

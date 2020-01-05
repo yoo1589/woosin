@@ -12,10 +12,14 @@ import com.woosin.woosin.customer.vo.CoperrationWoosin3;
 import com.woosin.woosin.customer.vo.CoperrationWoosinPage;
 import com.woosin.woosin.customer.vo.CoperrationWoosinPage2;
 import com.woosin.woosin.customer.vo.CoperrationWoosinPage3;
+import com.woosin.woosin.customer.vo.LoginForm;
+import com.woosin.woosin.customer.vo.Member;
 import com.woosin.woosin.customer.vo.Timeline;
 
 @Mapper
 public interface CustomerMapper {
+	// 로그인
+	public Member selectMemberOne(LoginForm loginForm);
 	// 페이징 용도
 	public int selectCommunityPageCount3();
 	// 공지사항 리스트

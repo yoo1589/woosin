@@ -28,6 +28,13 @@
 	</select>
 	
 	<!--문의 리스트 삭제 -->
+	<delete id="removeCummnity2" parameterType="int">
+      DELETE
+		FROM community2
+		WHERE community_no = #{communityNo}
+    </delete>
+    	
+	<!--문의 리스트 삭제 -->
 	<delete id="removeCummnity" parameterType="int">
       DELETE
 		FROM community
@@ -54,7 +61,22 @@
 		FROM corperration
 		WHERE corperration_no = #{corperrationNo}
     </delete>
-
+    
+	<!-- 공지사항 등록 -->
+	<insert id="insertCommunity2" parameterType="com.woosin.woosin.customer.vo.Community2">
+		INSERT INTO community2(
+		community_name,
+		community_title,
+		community_content,
+		community_date
+		) VALUES (
+		"관리자",
+		#{communityTitle},
+		#{communityContent},
+		NOW()
+		)
+	</insert>
+	
 	<!-- 연혁/타임라인 등록 -->
 	<insert id="insertTimeline" parameterType="com.woosin.woosin.customer.vo.Timeline">
 		INSERT INTO timeline(

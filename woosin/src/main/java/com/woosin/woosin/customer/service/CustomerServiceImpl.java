@@ -17,12 +17,21 @@ import com.woosin.woosin.customer.vo.CoperrationWoosin3;
 import com.woosin.woosin.customer.vo.CoperrationWoosinPage;
 import com.woosin.woosin.customer.vo.CoperrationWoosinPage2;
 import com.woosin.woosin.customer.vo.CoperrationWoosinPage3;
+import com.woosin.woosin.customer.vo.LoginForm;
+import com.woosin.woosin.customer.vo.Member;
 import com.woosin.woosin.customer.vo.Timeline;
 
 @Service
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
 @Autowired CustomerMapper customerMapper;
+	// 로그인정보 확인
+	@Override
+	public Member getMemberOne(LoginForm loginForm) {	   
+		//  System.out.print("impl : "+member);
+	   return customerMapper.selectMemberOne(loginForm);
+	}
+	// 공지사항 리스트
 	@Override
 	public Map<String, Object> getCommunity3(int currentPage, int rowPerPage) {
 		
