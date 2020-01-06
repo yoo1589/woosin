@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Franchisee {
-private String franchiseeNo;	
+private int franchiseeNo;	
 private String franchiseeName;	
 private String franchiseeDate;	
 private String franchiseeTitle;

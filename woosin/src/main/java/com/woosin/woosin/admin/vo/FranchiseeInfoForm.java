@@ -15,6 +15,7 @@ import lombok.Data;
 
 @Data
 public class FranchiseeInfoForm {
+	private int franchiseeNo;
 	private String picContent;
 	private List<MultipartFile> franchiseePicList;
 	private List<Integer> removeFileList;

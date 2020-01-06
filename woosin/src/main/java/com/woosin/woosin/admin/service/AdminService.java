@@ -10,6 +10,8 @@ import com.woosin.woosin.customer.vo.CoperrationWoosin;
 import com.woosin.woosin.customer.vo.Timeline;
 
 public interface AdminService {
+	// 게시글 사진리스트 조회
+	public Map<String, Object> getFranchiseeInfo(int franchiseeNo);
 	// 가맹점 정보 입력
 	public int addFranchiseeInfo(FranchiseeInfoForm FranchiseeInfoForm);
 	// 공지사항 리스트 삭제
@@ -33,7 +35,9 @@ public interface AdminService {
 	// 민간공사 추가
 	public int addCoperration1(CoperrationWoosin coperrationWoosin);
 	// 공지사항 리스트
-	public Map<String, Object> getTitle(int currentPage, int rowPerPage);	
+	public Map<String, Object> getTitle(int currentPage, int rowPerPage);
+	// 게시글 리스트
+	public List<Franchisee> getFranchiseeList(int franchiseeNo);	
 	// 공지사항 리스트
 	public List<Community2> getCommunity2List();	
 	// 연혁/타임라인 리스트

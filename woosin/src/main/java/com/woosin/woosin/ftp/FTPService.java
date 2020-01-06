@@ -13,7 +13,7 @@ import org.apache.commons.net.ftp.FTPReply;
 import org.apache.commons.net.io.CopyStreamAdapter;
 public class FTPService {
    // 저장할 서버 주소
-    private static final String SERVER = "iup.cdn3.cafe24.com";
+    private static final String SERVER = "yoo1589.cdn3.cafe24.com";
     private static final String USER = "yoo1589";
     private static final int PORT = 21;
     private static final String PW = "yoo1589!";

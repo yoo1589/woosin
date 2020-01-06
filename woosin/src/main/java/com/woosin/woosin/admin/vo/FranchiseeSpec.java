@@ -10,5 +10,6 @@ import lombok.Data;
 
 @Data
 public class FranchiseeSpec {
+	private int franchiseeNo;
 	private String picContent;
 }

@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>adminIndex</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets1/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets1/css/noscript.css" /></noscript>
+	</head>
+	
+<style>
+/* Styling */
+.timeline {
+  margin: 4em auto;
+  position: relative;
+  max-width: 46em;
+}
+.timeline:before {
+  background-color: black;
+  content: '';
+  margin-left: -1px;
+  position: absolute;
+  top: 0;
+  left: 2em;
+  width: 2px;
+  height: 100%;
+}
+
+.timeline-event {
+  position: relative;
+}
+.timeline-event:hover .timeline-event-icon {
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  background-color: #a83279;
+}
+.timeline-event:hover .timeline-event-thumbnail {
+  -moz-box-shadow: inset 40em 0 0 0 #a83279;
+  -webkit-box-shadow: inset 40em 0 0 0 #a83279;
+  box-shadow: inset 40em 0 0 0 #a83279;
+}
+
+.timeline-event-copy {
+  padding: 2em;
+  position: relative;
+  top: -1.875em;
+  left: 4em;
+  width: 80%;
+}
+.timeline-event-copy h3 {
+  font-size: 1.75em;
+}
+.timeline-event-copy h4 {
+  font-size: 1.2em;
+  margin-bottom: 1.2em;
+}
+.timeline-event-copy strong {
+  font-weight: 700;
+}
+.timeline-event-copy p:not(.timeline-event-thumbnail) {
+  padding-bottom: 1.2em;
+}
+
+.timeline-event-icon {
+  -moz-transition: -moz-transform 0.2s ease-in;
+  -o-transition: -o-transform 0.2s ease-in;
+  -webkit-transition: -webkit-transform 0.2s ease-in;
+  transition: transform 0.2s ease-in;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background-color: black;
+  outline: 10px solid white;
+  display: block;
+  margin: 0.5em 0.5em 0.5em -0.5em;
+  position: absolute;
+  top: 0;
+  left: 2em;
+  width: 1em;
+  height: 1em;
+}
+
+.timeline-event-thumbnail {
+  -moz-transition: box-shadow 0.5s ease-in 0.1s;
+  -o-transition: box-shadow 0.5s ease-in 0.1s;
+  -webkit-transition: box-shadow 0.5s ease-in;
+  -webkit-transition-delay: 0.1s;
+  transition: box-shadow 0.5s ease-in 0.1s;
+  color: white;
+  font-size: 0.75em;
+  background-color: black;
+  -moz-box-shadow: inset 0 0 0 0em #ef795a;
+  -webkit-box-shadow: inset 0 0 0 0em #ef795a;
+  box-shadow: inset 0 0 0 0em #ef795a;
+  display: inline-block;
+  margin-bottom: 1.2em;
+  padding: 0.25em 1em 0.2em 1em;
+}
+
+::-webkit-scrollbar{width: 16px;}
+::-webkit-scrollbar-track {background-color:##B2EBF4;}
+::-webkit-scrollbar-thumb {background-color:#C98AFF;border-radius: 10px;}
+::-webkit-scrollbar-thumb:hover {background: #555;}
+::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+width:16px;height:16px;background:##B2EBF4;} 
+</style>
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+		<!-- Header -->
+		<header id="header" class="alt">
+			<span class="logo"><img src="images1/logo.svg" alt="" /></span>
+			<h1>관리자</h1>
+			<p>메뉴얼 확인 요망<br />	
+		</header>
+		<h4>실적 사진 추가[사진,내용 게시판]</h4>
+
+ 		<tr th:each="str4:${list}">
+ 			<td>[번호]</td>
+		    <td th:text="${str4.franchiseeNo}" style="color: black;"></td>
+		    <td>[ID]</td>
+		    <td th:text="${str4.franchiseeName}" style="color: black;"></td>
+		    <td>[제목]</td>
+		    <td th:text="${str4.franchiseeTitle}" style="color: black;"></td>
+		    <td>[입력한날짜]</td>
+		    <td th:text="${str4.franchiseeDate}" style="color: black;"></td>
+		    
+			<h3>PC방 사진</h3>
+		      <div th:each="pic : ${franchiseeInfo.franchisePicList}">
+			     <div>
+			       <img th:src="${franchiseeInfo.uploadPath} + ${pic.fileName}" th:alt-title="${pic.originName}" width="200" height="200">
+			     </div>
+		    	</div>
+		    <h3>내용</h3>
+		    <div th:object="${franchiseeInfo}">
+		      <ul>
+		        <li th:text="*{franchiseeSpec?.picContent}">cpu</li>
+		        
+		      </ul>
+		    </div>  
+		 
+			<form action="/addPic" method="post" enctype="multipart/form-data">
+				<div>
+					<input type="hidden" th:value="${str4.franchiseeNo}" name="franchiseeNo">
+				</div>
+				<div class="form-group">
+					<label for="picContent">내용:</label> 
+					<input type="text" class="form-control" id="picContent" placeholder="내용 입력[null 빈공간 허용]" name="picContent" required>
+				</div>
+					
+				<div class="form-group">
+					<label for="franchiseePic">공사 사진[다중파일]:</label> 
+					<input multiple="multiple" type="file" class="form-control" id="franchiseePic" placeholder="Enter Pictures" name="franchiseePicList" >
+				</div>
+				
+				<button id="addButton" type="submit" class="btn btn-primary">입력</button>
+			</form>
+	</tr>	
+		
+	</div>
+<!-- Scripts -->
+		<script src="assets1/js/jquery.min.js"></script>
+		<script src="assets1/js/jquery.scrollex.min.js"></script>
+		<script src="assets1/js/jquery.scrolly.min.js"></script>
+		<script src="assets1/js/browser.min.js"></script>
+		<script src="assets1/js/breakpoints.min.js"></script>
+		<script src="assets1/js/util.js"></script>
+		<script src="assets1/js/main.js"></script>
+<script>
+
+
+</script>
+</body>
+</html>

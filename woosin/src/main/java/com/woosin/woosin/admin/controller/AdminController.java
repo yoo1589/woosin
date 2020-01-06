@@ -22,6 +22,24 @@ import com.woosin.woosin.customer.vo.Timeline;
 @Controller
 public class AdminController {
 	@Autowired AdminService adminService;
+	// 게시글 정보 디테일
+	@GetMapping("/detailAdmin")
+	public String QnaCustomerDetail(HttpSession session, Model model, @RequestParam("franchiseeNo")int franchiseeNo) {
+		if (session.getAttribute("id") == null) {
+			return "redirect:/";
+		}	
+		System.out.println("컨트롤러요청");
+		System.out.println(franchiseeNo);
+		List<Franchisee> list = adminService.getFranchiseeList(franchiseeNo);
+		model.addAttribute("list",list);
+		// 가맹점 정보 사진, 업로드 경로, pc사양 가져와서 model로 넘김
+		Map<String, Object> franchiseeInfo = adminService.getFranchiseeInfo(franchiseeNo);
+		System.out.println("franchiseeInfo:" + franchiseeInfo);
+		model.addAttribute("franchiseeInfo", franchiseeInfo);
+		
+		return "detailAdmin";
+	}
+	
 	// 사진 정보 입력
 	@PostMapping("/addPic")
 	public String addPic(FranchiseeInfoForm franchiseeInfoForm) {

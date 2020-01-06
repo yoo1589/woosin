@@ -16,6 +16,8 @@ import lombok.Data;
 
 @Data
 public class FranchiseePic {	
+	private int franchiseeNo;
+	private int picNo;
 	private String fileName;
 	private String extension;
 	private String contentType;

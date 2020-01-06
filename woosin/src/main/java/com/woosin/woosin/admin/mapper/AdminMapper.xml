@@ -4,13 +4,42 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="com.woosin.woosin.admin.mapper.AdminMapper">
+	<select id="selectFranchiseePic" parameterType="int" resultType="com.woosin.woosin.admin.vo.FranchiseePic">
+		SELECT
+			pic_no as picNo,
+			franchisee_no as franchiseeNo,
+			file_name as fileName,
+			extension as extension,
+			origin_name as originName
+		FROM franchisee_pic
+		WHERE franchisee_no = #{franchiseeNo}
+	</select>
+	
+	<select id="selelctFranchiseeSpec" parameterType="int" resultType="com.woosin.woosin.admin.vo.FranchiseeSpec">
+	   SELECT 
+	      franchisee_no as franchiseeNo,
+	      pic_content as picContent
+	   FROM franchisee_spec
+	   WHERE franchisee_no = #{franchiseeNo}
+	</select>
+
+	<select id="selectFranchiseeList" resultType="com.woosin.woosin.admin.vo.Franchisee" parameterType="int">
+		SELECT 
+			franchisee_no as franchiseeNo,
+			franchisee_name as franchiseeName,
+			franchisee_date	as franchiseeDate,
+			franchisee_title as franchiseeTitle
+		FROM franchisee
+		WHERE franchisee_no = #{franchiseeNo}
+	</select>
+
 	<!-- 가맹점 pc사양 입력 -->
 	<insert id="insertFranchiseeSpec" parameterType="com.woosin.woosin.admin.vo.FranchiseeSpec">
 	   INSERT INTO franchisee_spec(
-	      pic_title,
+	   	  franchisee_no,
 	      pic_content
 	   ) VALUES (
-	      #{picTitle},
+	   	  #{franchiseeNo},
 	      #{picContent}
 	   )
 	</insert>
@@ -18,12 +47,14 @@
 	<!-- 가맹점 사진 입력 -->
 	<insert id="insertFranchiseePic" parameterType="com.woosin.woosin.admin.vo.FranchiseePic">
 	   INSERT INTO franchisee_pic (
+	   	  franchisee_no,
 	      file_name,
 	      extension,
 	      content_type,
 	      size,
 	      origin_name
 	   ) VALUES(
+	      #{franchiseeNo},
 	      #{fileName},
 	      #{extension},
 	      #{contentType},

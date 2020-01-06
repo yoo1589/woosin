@@ -17,6 +17,10 @@ import com.woosin.woosin.customer.vo.Timeline;
 
 @Mapper
 public interface AdminMapper {
+	// 사진 조회
+	public List<FranchiseePic> selectFranchiseePic(int franchiseeNo);
+	// 내용 조회
+	public FranchiseeSpec selelctFranchiseeSpec(int franchiseeNo);
 	// 사진 정보 입력
 	public int insertFranchiseeSpec(FranchiseeSpec franchiseeSpec);
 	// 사진 입력
@@ -47,6 +51,8 @@ public interface AdminMapper {
 	public int insertCoperrationWoosin(CoperrationWoosin coperrationWoosin);
 	// 게시글 리스트
 	public List<Franchisee> selectTitle(CoperrationWoosinPage2 coperrationWoosinPage2);	
+	// 게시글 상세보기
+	public List<Franchisee> selectFranchiseeList(int franchiseeNo);	
 	// 공지사항 리스트
 	public List<Community2> selectCommunity2List();		
 	// 타임라인/연혁 리스트

@@ -32,6 +32,29 @@ import com.woosin.woosin.ftp.FTPService;
 @Transactional
 public class AdminServiceImpl implements AdminService{		
 @Autowired AdminMapper adminMapper;
+	// 사진리스트 가져오기
+	@Override
+	public Map<String, Object> getFranchiseeInfo(int franchiseeNo) {
+		// FranchiseePic + franchiseeSpec => Map으로 franchiseeInfo 리턴 
+		Map<String, Object> franchiseeInfo = new HashMap<String, Object>();
+		
+		// 가맹점 pc사양
+		FranchiseeSpec franchiseeSpec = adminMapper.selelctFranchiseeSpec(franchiseeNo);
+		
+		System.out.println("franchiseeSpec: " + franchiseeSpec);
+		franchiseeInfo.put("franchiseeSpec", franchiseeSpec);
+		
+		// 가맹점 사진
+		List<FranchiseePic> franchisePicList = adminMapper.selectFranchiseePic(franchiseeNo);
+		System.out.println("Service franchisePicList: " + franchisePicList);
+		// 저장 경로
+		String uploadPath = "http://yoo1589.cdn3.cafe24.com//";
+		
+		franchiseeInfo.put("franchisePicList", franchisePicList);
+		franchiseeInfo.put("uploadPath", uploadPath);
+		
+		return franchiseeInfo;
+	}
 	// 가맹점 정보 입력
 	@Override
 	public int addFranchiseeInfo(FranchiseeInfoForm franchiseeInfoForm) {
@@ -55,10 +78,9 @@ public class AdminServiceImpl implements AdminService{
 		
 		// FranchiseeInfo로 db에 저장
 		FranchiseeSpec franchiseeSpec = new FranchiseeSpec();
+		franchiseeSpec.setFranchiseeNo(franchiseeInfoForm.getFranchiseeNo());
 		franchiseeSpec.setPicContent(franchiseeInfoForm.getPicContent());
 		
-		System.out.println("getContent: " + franchiseeInfoForm.getPicContent());
-
 		rows += adminMapper.insertFranchiseeSpec(franchiseeSpec);
 		
 		// 2. FranchiseePic
@@ -93,6 +115,7 @@ public class AdminServiceImpl implements AdminService{
 			
 			// franchiseePic으로  db에 저장
 			FranchiseePic franchiseePic = new FranchiseePic();
+			franchiseePic.setFranchiseeNo(franchiseeInfoForm.getFranchiseeNo());
 			franchiseePic.setContentType(contentType);
 			franchiseePic.setExtension(extension);
 			franchiseePic.setFileName(saveFileName);
@@ -116,7 +139,7 @@ public class AdminServiceImpl implements AdminService{
 			// 저장될 파일 이름
 			String storeFileName = franchiseePic.getFileName();
 			// 업로드 디렉토리
-			String dir = "/www/franchisee/";
+			String dir = "/www/";
 			// 업로드 결과
 			boolean result = false;
 			try {
@@ -152,9 +175,9 @@ public class AdminServiceImpl implements AdminService{
 			// 인덱스 증가
 			FileListIndex++;
 		}
-		
-		return rows;
-	}
+	
+	return rows;
+}
 
 	// 게시판 리스트확인
 	@Override
@@ -266,7 +289,12 @@ public class AdminServiceImpl implements AdminService{
 		return adminMapper.insertCoperrationWoosin(coperrationWoosin);
 	}
 	
-	
+	// 게시글 디테일 확인
+	@Override
+	public List<Franchisee> getFranchiseeList(int franchiseeNo) {
+		System.out.println("서비스쪽"+franchiseeNo);
+		return adminMapper.selectFranchiseeList(franchiseeNo);
+	}	
 	// 공지사항 리스트 확인
 	@Override
 	public List<Community2> getCommunity2List() {
