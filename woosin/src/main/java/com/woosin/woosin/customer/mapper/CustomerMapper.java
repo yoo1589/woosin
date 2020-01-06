@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.woosin.woosin.admin.vo.Franchisee;
+import com.woosin.woosin.admin.vo.FranchiseePic;
 import com.woosin.woosin.customer.vo.Community;
 import com.woosin.woosin.customer.vo.Community2;
 import com.woosin.woosin.customer.vo.CoperrationWoosin;
@@ -18,6 +20,10 @@ import com.woosin.woosin.customer.vo.Timeline;
 
 @Mapper
 public interface CustomerMapper {
+	// 가맹점 썸네일 사진 조회
+	public List<FranchiseePic> selectFranchiseeThumbnail();
+	// 리스트 조회
+	public List<Franchisee> selectFranchiseeList();
 	// 로그인
 	public Member selectMemberOne(LoginForm loginForm);
 	// 페이징 용도

@@ -16,6 +16,7 @@
   position: relative;
   max-width: 46em;
 }
+
 .timeline:before {
   background-color: black;
   content: '';
@@ -113,6 +114,8 @@ width:16px;height:16px;background:##B2EBF4;}
 	<!-- Wrapper -->
 	<div id="wrapper">
 	<!-- Header -->
+		<div class="logo"><a href="/index">우신종합건설</a></div>
+		
 		<header id="header" class="alt">
 			<span class="logo"><img src="images1/logo.svg" alt="" /></span>
 			<h1>관리자</h1>
@@ -298,7 +301,7 @@ width:16px;height:16px;background:##B2EBF4;}
 					    <td th:text="${str5.franchiseeTitle}" style="color: black;"></td>
 					    <td th:text="${str5.franchiseeDate}" style="color: black;"></td>
 					    <td><a href="#" th:href="@{/detailAdmin?(franchiseeNo=${str5.franchiseeNo})}" class="btn btn-primary">정보입력</a></td>
-					    <td><a href="#" th:href="@{/deleteCummnity?(franchiseeNo=${str5.franchiseeNo})}" class="btn btn-primary">삭제</a></td>
+					    <td><a href="#" th:href="@{/delFranchisee?(franchiseeNo=${str5.franchiseeNo})}" class="btn btn-primary">게시글삭제*반드시 내용물 지우가 삭제할것*</a></td>
 					  </tr>
 					  
 					</table>

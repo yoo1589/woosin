@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.woosin.woosin.admin.vo.Delete;
 import com.woosin.woosin.admin.vo.Franchisee;
 import com.woosin.woosin.admin.vo.FranchiseePic;
 import com.woosin.woosin.admin.vo.FranchiseeSpec;
@@ -17,6 +18,17 @@ import com.woosin.woosin.customer.vo.Timeline;
 
 @Mapper
 public interface AdminMapper {
+	public List<String> selectDeleteList(int franchiseeNo);	
+	// 사진 번호로 가맹점 사진 하나 조회
+	public FranchiseePic selectFranchiseePicOne(int picNo);
+	// 게시글  삭제
+	public int removeFranchisee2(int franchiseeNo);	
+	// 게시글 내용 삭제
+	public int deletefranchiseeSpec(int franchiseeNo1);
+	// 사진 삭제
+	public int deletefranchiseePic(int franchiseeNo1);
+	// 게시글 삭제
+	public int deletefranchisee(int franchiseeNo);
 	// 사진 조회
 	public List<FranchiseePic> selectFranchiseePic(int franchiseeNo);
 	// 내용 조회

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.woosin.woosin.admin.vo.Franchisee;
+import com.woosin.woosin.admin.vo.FranchiseePic;
 import com.woosin.woosin.customer.mapper.CustomerMapper;
 import com.woosin.woosin.customer.vo.Community;
 import com.woosin.woosin.customer.vo.Community2;
@@ -25,6 +27,27 @@ import com.woosin.woosin.customer.vo.Timeline;
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
 @Autowired CustomerMapper customerMapper;
+	// 썸네일 사진 가져오기
+	@Override
+	public Map<String, Object> getFranchiseeThumbnail(List<Franchisee> franchiseeList) {
+		System.out.println("getFranchiseeThumbnail franchiseeList: " + franchiseeList);
+		// 썸네일 사진과 경로를 가지는 맵 리턴
+		Map<String, Object> thumbnailInfo = new HashMap<String, Object>();
+		// 저장 경로
+		String uploadPath = "http://yoo1589.cdn3.cafe24.com//";
+		thumbnailInfo.put("uploadPath", uploadPath);
+		// 썸네일 사진
+		List<FranchiseePic> thumbnailList = customerMapper.selectFranchiseeThumbnail();
+		
+		thumbnailInfo.put("thumbnailList", thumbnailList);
+		
+		return thumbnailInfo;
+	}
+	// 리스트 조회
+	@Override
+	public List<Franchisee> getFranchiseeList() { 
+		return customerMapper.selectFranchiseeList();
+	}
 	// 로그인정보 확인
 	@Override
 	public Member getMemberOne(LoginForm loginForm) {	   

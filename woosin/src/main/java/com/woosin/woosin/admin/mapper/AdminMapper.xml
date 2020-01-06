@@ -4,6 +4,44 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="com.woosin.woosin.admin.mapper.AdminMapper">
+
+	<select id="selectDeleteList" parameterType="int" resultType="String">
+		SELECT
+			file_name as fileName
+		FROM franchisee_pic
+		WHERE franchisee_no = #{franchiseeNo}
+	</select>
+	
+	<select id="selectFranchiseePicOne" parameterType="int" resultType="com.woosin.woosin.admin.vo.FranchiseePic">
+		SELECT
+			pic_no as picNo,
+			franchisee_no as franchiseeNo,
+			file_name as fileName,
+			extension as extension,
+			origin_name as originName
+		FROM franchisee_pic
+		WHERE pic_no = #{picNo}
+	</select>
+
+	<delete id="deletefranchiseeSpec" parameterType="int">
+		DELETE 
+		FROM franchisee_spec
+		WHERE franchisee_no = #{franchiseeNo1}
+	</delete>
+		
+	<delete id="deletefranchiseePic" parameterType="int">
+		DELETE 
+		FROM franchisee_pic
+		WHERE franchisee_no = #{franchiseeNo1}
+	</delete>
+
+	<delete id="deletefranchisee" parameterType="int">
+
+		DELETE 
+		FROM franchisee
+		WHERE franchisee_no = #{franchiseeNo}
+	</delete>
+	
 	<select id="selectFranchiseePic" parameterType="int" resultType="com.woosin.woosin.admin.vo.FranchiseePic">
 		SELECT
 			pic_no as picNo,
@@ -83,7 +121,12 @@
 	   FROM community
 	   LIMIT #{beginRow}, #{rowPerPage}
 	</select>
-	
+	<!--게시글 삭제 -->
+	<delete id="removeFranchisee2" parameterType="int">
+      DELETE
+		FROM franchisee
+		WHERE franchisee_no = #{franchiseeNo}
+    </delete>	
 	<!--문의 리스트 삭제 -->
 	<delete id="removeCummnity2" parameterType="int">
       DELETE

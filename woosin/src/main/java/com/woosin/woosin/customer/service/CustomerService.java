@@ -3,12 +3,17 @@ package com.woosin.woosin.customer.service;
 import java.util.List;
 import java.util.Map;
 
+import com.woosin.woosin.admin.vo.Franchisee;
 import com.woosin.woosin.customer.vo.Community;
 import com.woosin.woosin.customer.vo.LoginForm;
 import com.woosin.woosin.customer.vo.Member;
 import com.woosin.woosin.customer.vo.Timeline;
 
 public interface CustomerService {
+	// 썸네일 사진 조회
+	public Map<String, Object> getFranchiseeThumbnail(List<Franchisee> franchiseeList);
+	// 리스트 조회
+	public List<Franchisee> getFranchiseeList();
 	//로그인 정보
 	public Member getMemberOne(LoginForm loginForm);
 	// 공지사항 리스트

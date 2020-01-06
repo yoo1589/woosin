@@ -10,10 +10,14 @@ import com.woosin.woosin.customer.vo.CoperrationWoosin;
 import com.woosin.woosin.customer.vo.Timeline;
 
 public interface AdminService {
+	// 게시 정보 삭제
+	public int modifyFranchiseeInfo(FranchiseeInfoForm franchiseeInfoForm);
 	// 게시글 사진리스트 조회
 	public Map<String, Object> getFranchiseeInfo(int franchiseeNo);
 	// 가맹점 정보 입력
 	public int addFranchiseeInfo(FranchiseeInfoForm FranchiseeInfoForm);
+	// 게시글 삭제
+	public int delFranchisee(int franchiseeNo);	
 	// 공지사항 리스트 삭제
 	public int deleteCummnity2(int communityNo);		
 	// 문의 리스트 삭제

@@ -4,6 +4,30 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="com.woosin.woosin.customer.mapper.CustomerMapper">
+
+	<select id="selectFranchiseeThumbnail" parameterType="string" resultType="com.woosin.woosin.admin.vo.FranchiseePic">
+		SELECT 
+			franchisee_no as FranchiseeNo,
+			pic_no as picNo,
+			file_name as fileName,
+			extension as extension,
+			content_type as contentType,
+			size as size,
+			origin_name as originName
+		FROM franchisee_pic
+		GROUP BY franchisee_no
+		HAVING MIN(pic_no)
+	</select>
+	
+	<select id="selectFranchiseeList" resultType="com.woosin.woosin.admin.vo.Franchisee">
+	   SELECT 
+	      franchisee_no as franchiseeNo,
+	      franchisee_title as franchiseeTitle
+	   FROM franchisee 
+	   ORDER BY franchisee_no DESC
+	   LIMIT 8
+	</select>
+	
 	<!-- 로그인확인 -->
    <select id="selectMemberOne" parameterType="com.woosin.woosin.customer.vo.LoginForm" resultType="com.woosin.woosin.customer.vo.Member">
       SELECT

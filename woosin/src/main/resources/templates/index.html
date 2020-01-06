@@ -7,6 +7,11 @@
 -->
 <html>
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="assets3/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="assets3/css/heroic-features.css" rel="stylesheet">
 <head>
 	<title>woosin</title>
 	<meta charset="utf-8" />
@@ -22,13 +27,50 @@
     color: black;
     font: bold;
     }
-    
-    	::-webkit-scrollbar{width: 16px;}
-		::-webkit-scrollbar-track {background-color:#ABABAB;}
-		::-webkit-scrollbar-thumb {background-color:#191919;border-radius: 10px;}
-		::-webkit-scrollbar-thumb:hover {background: #555;}
-		::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
-		width:16px;height:16px;background:#ABABAB;} 
+div.gallery {
+
+    margin: 5px;
+
+    border: 1px solid #ccc;
+
+    float: left;
+
+    width: 180px;
+
+}
+
+ 
+
+div.gallery:hover {
+
+    border: 1px solid #777;
+
+}
+
+ 
+
+div.gallery img {
+
+    width: 100%;
+
+    height: auto;
+
+}
+
+ 
+
+div.desc {
+
+    padding: 15px;
+
+    text-align: center;    
+::-webkit-scrollbar{width: 16px;}
+::-webkit-scrollbar-track {background-color:#ABABAB;}
+::-webkit-scrollbar-thumb {background-color:#191919;border-radius: 10px;}
+::-webkit-scrollbar-thumb:hover {background: #555;}
+::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+width:16px;height:16px;background:#ABABAB;} 
+
 </style>
     <div class="scrollbar" id="style-2">
       <div class="force-overflow"></div>
@@ -48,7 +90,7 @@
 					<li><a href="woosinIntroduce">회사소개</a></li>
 					<li><a href="woosinCompuny">주요사업 내용</a></li>
 					<li><a href="coperrationWoosin">주요실적</a></li>
-					<li><a href="elements.html">공사이미지</a></li>
+					<li><a href="imgList">공사이미지</a></li>
 					<li><a href="registrationWoosin">인증/보유</a></li>
 					<li><a href="Community">커뮤니티</a></li>
 				</ul>
@@ -73,27 +115,19 @@
 					<div>
 						<div class="box">
 							<div class="image fit">
-								<img src="images/608.png" height="380px" alt="" />
+								<img src="images/608.jpg" height="380px" alt="" />
 							</div>
 							<div class="content">
 								<header class="align-center">
-								<h3> 2020-01-03 카피라이트 변경, 연혁 타임라인 데이터베이스기반 기능 구현, css변경, 서버 카카오맵 키값추가</h3>
-								<h3> 2020-01-04 배경변경 adminIndex추가 연혁/타임라인 리스트 출력 구현, 공장,연혁,민간 추가기능 구현 ,전체적 css 변경</h3>
-								<h3> 2020-01-045 메인 카테고리 추가 후 테이블변경 커뮤니티 기능활성화 어드민 구현확인</h3>
-								<H3>
-								사진 메인베너 동영상 변경시 이미지 파일첨부 후 카톡 kuooe@naver.com</H3>
-								<h3>
-								https://pixabay.com/images/ [사진] <br>
-								https://pixabay.com/videos/search/%EA%B1%B4%EB%AC%BC/ [메인 베너 영상]
-								</H3>
+
 								
-									<h2>대표 서비스</h2>
-									<p>Main Service</p>
+								<h2>대표 서비스</h2>
+								<p>Main Service</p>
 								</header>
 								<hr/>
 								
 								<!--  폰트변경 예정 진하게 -->
-								<p align="center">[폰트변경 예정 진하게] 혁신이상의 기술을 보유한 우신건설 홈페이지를 찾아주신 고객여러분 진심으로 환영합니다. </p>
+								<p align="center">혁신이상의 기술을 보유한 우신건설 홈페이지를 찾아주신 고객여러분 진심으로 환영합니다. </p>
 								<p align="center">믿음과 신뢰성을 가지고 아름다운 건물을 짓겠다는 신념을 가지고 전 직원이 한마음으로  공사품질관리,</p>
 								<p align="center">원가절감,부실방지로 절감된 비용을 고객에게 돌려주는 것을 원칙으로 하는 회사입니다.</p>
 								
@@ -113,7 +147,7 @@
 							<header>
 								<h3>1:1 문의하기</h3>
 							</header>
-							<p>Inquiry</p>
+						
 							<img src="images/1002.png" alt="" style="filter:invert()" width="230px" height="170px" />
 							<ul class="actions">
 								<li><a href="/Community" class="button alt">Inquiry</a></li>
@@ -123,7 +157,7 @@
 							<header>
 								<h3>연혁/타임라인</h3>
 							</header>
-							<p>Time Line</p>
+							
 							<img src="images/1001.png" alt="" style="filter:invert()"  width="230px" height="170px" />
 							<ul class="actions">
 								<li><a href="/woosinIntroduce4" class="button alt">Time Line</a></li>
@@ -134,7 +168,7 @@
 							<header>
 								<h3>관급/민간 실적</h3>
 							</header>
-							<p>Performance</p>
+							
 							<img src="images/1003.png" alt="" style="filter:invert()"  width="230px" height="170px" />
 							<ul class="actions">
 								<li><a href="/coperrationWoosin" class="button alt">Performance</a></li>
@@ -144,47 +178,34 @@
 				</div>
 			</section>
 
+
 		<!-- Three 시공실적 리스트 페이징 기능 추가예정 -->
 			<section id="three" class="wrapper style2">
 				<div class="inner">
-					<div class="grid-style">
-
-						<div>
-							<div class="box">
-								<div class="image fit">
-									<img src="images/pic02.jpg" alt="" />
-								</div>
-								<div class="content">
-									<header class="align-center">
-										<h2>Lorem ipsum dolor</h2>
-										<p>maecenas feugiat ex purus, quis volutpat lacus placerat</p>
-									</header>
-									<hr />
-									<p> Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis. Vestibulum sit amet tortor velit. Nam elementum nibh a libero pharetra elementum. Maecenas feugiat ex purus, quis volutpat lacus placerat malesuada. Praesent in sem ex. Morbi mattis sapien pretium tellus venenatis, at egestas urna ornare.</p>
-								</div>
-							</div>
-						</div>
-
-						<div>
-							<div class="box">
-								<div class="image fit">
-									<img src="images/pic03.jpg" alt="" />
-								</div>
-								<div class="content">
-									<header class="align-center">
-										<h2>Vestibulum sit amet</h2>
-										<p>mattis sapien pretium tellus venenatis</p>
-									</header>
-									<hr />
-									<p> Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis. Vestibulum sit amet tortor velit. Nam elementum nibh a libero pharetra elementum. Maecenas feugiat ex purus, quis volutpat lacus placerat malesuada. Praesent in sem ex. Morbi mattis sapien pretium tellus venenatis, at egestas urna ornare.</p>
-								</div>
-							</div>
-						</div>
-
+					<div th:fragment="event">
+				    	<!-- 가맹점 목록 -->
+					    <header class="jumbotron my-4">
+					    <h3 align="center">공사 이미지</h3>
+					    <div class="row text-center">
+					      <div class="col-lg-3 col-md-6 mb-4" th:each="list:${franchiseeList}">
+					        <div class="card h-100">
+					         <img class="card-img-top" th:each="thumbnail : ${thumbnailInfo.thumbnailList}" th:if="${thumbnail.franchiseeNo} == ${list.franchiseeNo}" th:src="${thumbnailInfo.uploadPath} + ${thumbnail.fileName}" height="200px" alt="">
+					          <div class="card-body">
+					            <h4 class="card-title" th:text="${list.franchiseeTitle}">FranchiseeName</h4>
+					          </div>
+					          <div class="card-footer">
+					            <a href="#" class="button" th:href="@{/detailFranchisee?(franchiseeNo=${list.franchiseeNo})}" th:text="자세히">자세히</a>
+					       
+					          </div>
+					        </div>
+					      </div>
+					    </div>
+					    </header>
 					</div>
 				</div>
-			</section>
 
+			</section>
+			
 			<!-- Four -->
 			<section id="two" class="wrapper style3">
 				<div class="inner">
@@ -193,20 +214,20 @@
 							<header>
 								<h3>업무흐름표</h3>
 							</header>
-							<p>Business chart</p>
+							
 							<img src="images/203.png" alt="" style="filter:invert()" width="230px" height="180px" />
 							<ul class="actions">
-								<li><a href="/woosinIntroduce2" class="button alt">Learn More</a></li>
+								<li><a href="/woosinIntroduce2" class="button alt">Business chart</a></li>
 							</ul>
 						</div>
 						<div>
 							<header>
 								<h3>등록증</h3>
 							</header>
-							<p>Registration</p>
+							
 							<img src="images/201.png" alt="" style="filter:invert()"  width="230px" height="180px" />
 							<ul class="actions">
-								<li><a href="/registrationWoosin" class="button alt">Learn More</a></li>
+								<li><a href="/registrationWoosin" class="button alt">Registration</a></li>
 							</ul>
 					
 						</div>
@@ -214,16 +235,16 @@
 							<header>
 								<h3>오시는길</h3>
 							</header>
-							<p>way to come</p>
+							
 							<img src="images/204.png" alt="" style="filter:invert()"  width="230px" height="180px" />
 							<ul class="actions">
-								<li><a href="/woosinIntroduce3" class="button alt">Learn More</a></li>
+								<li><a href="/woosinIntroduce3" class="button alt">way to come</a></li>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</section>
-
+				
 		<!-- Footer -->
 			<footer id="footer" class="wrapper">
 				<div class="inner">
@@ -283,10 +304,19 @@
 <script src="assets/js/skel.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets3/vendor/jquery/jquery.min.js"></script>
+<script src="assets3/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 <script>
 $("#add").click(function(){
 	 alert("[문의등록] 빠른 시일내에 메일로 답변이 전송됩니다.");
 	});
+	
+$(".hover").mouseleave(
+		  function() {
+		    $(this).removeClass("hover");
+		  }
+		);
 </script>			
 
 	</body>

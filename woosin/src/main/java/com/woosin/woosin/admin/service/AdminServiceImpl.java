@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.woosin.woosin.admin.mapper.AdminMapper;
+import com.woosin.woosin.admin.vo.Delete;
 import com.woosin.woosin.admin.vo.Franchisee;
 import com.woosin.woosin.admin.vo.FranchiseeInfoForm;
 import com.woosin.woosin.admin.vo.FranchiseePic;
@@ -32,6 +33,66 @@ import com.woosin.woosin.ftp.FTPService;
 @Transactional
 public class AdminServiceImpl implements AdminService{		
 @Autowired AdminMapper adminMapper;
+
+	// 가맹점 정보 수정
+	@Override
+	public int modifyFranchiseeInfo(FranchiseeInfoForm franchiseeInfoForm) {
+		// 리턴 변수
+		int rows = 0;
+		//franchiseeInfoForm을 franchiseePic, franchiseeSpec으로 분리
+		System.out.println("Service modify franchiseeInfoForm: " + franchiseeInfoForm);
+		// 1. franchiseeSpec UPDATE
+		FranchiseeSpec franchiseeSpec = new FranchiseeSpec();
+		franchiseeSpec.setFranchiseeNo(franchiseeInfoForm.getFranchiseeNo());
+		franchiseeSpec.setPicContent(franchiseeInfoForm.getPicContent());
+		int franchiseeNo = franchiseeInfoForm.getFranchiseeNo();
+		
+		adminMapper.deletefranchiseeSpec(franchiseeNo);
+		//adminMapper.deletefranchiseePic(franchiseeNo);
+		
+		// FTP 파일 경로
+		String dir = "/www/";
+		// 2. franchiseePic DELETE
+		// 삭제할 파일 목록 저장
+
+		List<String> fileList = adminMapper.selectDeleteList(franchiseeNo);
+		
+		// 목록이 null이 아닐경우 파일 삭제 체크한 사진 삭제 
+		if(fileList != null) {
+			// 삭제 리스트 반복문
+			for(String storeFileName : fileList) {
+				// 삭제할 사진 가져옴
+				// 삭제 결과
+				boolean result = false;
+				try {
+					// db에서 삭제
+					rows += adminMapper.deletefranchiseePic(franchiseeNo);
+					
+					// CDN에서 삭제 시작
+					System.out.println("Delete Start");
+					FTPService ftpUploader = new FTPService();
+					// FTP 연결
+					ftpUploader.connectFTP(dir);
+					// 파일 삭제
+					result = ftpUploader.deleteFile(storeFileName);
+					// FTP 연결 해제
+					ftpUploader.disconnect();
+					System.out.println("Done");
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+					// 파일 삭제할 때 예외발생 시 rollback 시키기 위해 강제로 런타임 예외 발생시킴.
+					throw new RuntimeException();
+				}
+				if(result) {
+					System.out.println("삭제 성공");
+				} else {
+					System.out.println("삭제 실패");
+				}
+			}
+		}
+		return rows;
+	}
 	// 사진리스트 가져오기
 	@Override
 	public Map<String, Object> getFranchiseeInfo(int franchiseeNo) {
@@ -41,12 +102,12 @@ public class AdminServiceImpl implements AdminService{
 		// 가맹점 pc사양
 		FranchiseeSpec franchiseeSpec = adminMapper.selelctFranchiseeSpec(franchiseeNo);
 		
-		System.out.println("franchiseeSpec: " + franchiseeSpec);
+		//System.out.println("franchiseeSpec: " + franchiseeSpec);
 		franchiseeInfo.put("franchiseeSpec", franchiseeSpec);
 		
 		// 가맹점 사진
 		List<FranchiseePic> franchisePicList = adminMapper.selectFranchiseePic(franchiseeNo);
-		System.out.println("Service franchisePicList: " + franchisePicList);
+		//System.out.println("Service franchisePicList: " + franchisePicList);
 		// 저장 경로
 		String uploadPath = "http://yoo1589.cdn3.cafe24.com//";
 		
@@ -238,6 +299,11 @@ public class AdminServiceImpl implements AdminService{
 		map3.put("lastPage", lastPage);
 		return map3;
 		}
+	// 게시글 삭제
+	@Override
+	public int delFranchisee(int franchiseeNo) {		
+		return adminMapper.removeFranchisee2(franchiseeNo);
+	}	
 	// 공지사항 리스트 삭제
 	@Override
 	public int deleteCummnity2(int communityNo) {		

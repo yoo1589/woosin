@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.woosin.woosin.admin.vo.FranchiseeInfoForm;
+import com.woosin.woosin.admin.vo.Franchisee;
 import com.woosin.woosin.customer.service.CustomerService;
 import com.woosin.woosin.customer.vo.Community;
 import com.woosin.woosin.customer.vo.LoginForm;
@@ -23,6 +23,22 @@ import com.woosin.woosin.customer.vo.Timeline;
 @Controller
 public class CustomerController {
 	@Autowired CustomerService customerService;
+	
+	//사진 리스트 페이지 요청
+	@GetMapping("/imgList")
+    public String imgList(Model model){
+		
+	List<Franchisee> franchiseeList = customerService.getFranchiseeList();
+	System.out.println("Controller franchiseeList:" + franchiseeList);
+	model.addAttribute("franchiseeList", franchiseeList);
+	
+	// 가맹점 썸네일 사진 가져와서 Model로 넘김
+	Map<String, Object> thumbnailInfo = customerService.getFranchiseeThumbnail(franchiseeList);
+	System.out.println("thumbnailInfo: " + thumbnailInfo);
+	model.addAttribute("thumbnailInfo", thumbnailInfo);
+		
+      return "imgList";
+	}
 	
 	
     @PostMapping("/login")
@@ -92,7 +108,18 @@ public class CustomerController {
 	
 	//customer index 요청
 	@GetMapping({"/index","/"})
-    public String customerIndex(){
+    public String customerIndex(Model model){
+		
+	List<Franchisee> franchiseeList = customerService.getFranchiseeList();
+	System.out.println("Controller franchiseeList:" + franchiseeList);
+	model.addAttribute("franchiseeList", franchiseeList);
+	
+	// 가맹점 썸네일 사진 가져와서 Model로 넘김
+	Map<String, Object> thumbnailInfo = customerService.getFranchiseeThumbnail(franchiseeList);
+	System.out.println("thumbnailInfo: " + thumbnailInfo);
+	model.addAttribute("thumbnailInfo", thumbnailInfo);
+		
+	  
       return "index";
 	}
 	//기본 템플릿확인용도

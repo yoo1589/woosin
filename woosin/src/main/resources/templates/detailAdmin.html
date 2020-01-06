@@ -116,10 +116,7 @@ width:16px;height:16px;background:##B2EBF4;}
 		<header id="header" class="alt">
 			<span class="logo"><img src="images1/logo.svg" alt="" /></span>
 			<h1>관리자</h1>
-			<p>메뉴얼 확인 요망<br />	
 		</header>
-		<h4>실적 사진 추가[사진,내용 게시판]</h4>
-
  		<tr th:each="str4:${list}">
  			<td>[번호]</td>
 		    <td th:text="${str4.franchiseeNo}" style="color: black;"></td>
@@ -130,7 +127,7 @@ width:16px;height:16px;background:##B2EBF4;}
 		    <td>[입력한날짜]</td>
 		    <td th:text="${str4.franchiseeDate}" style="color: black;"></td>
 		    
-			<h3>PC방 사진</h3>
+			<h3>사진</h3>
 		      <div th:each="pic : ${franchiseeInfo.franchisePicList}">
 			     <div>
 			       <img th:src="${franchiseeInfo.uploadPath} + ${pic.fileName}" th:alt-title="${pic.originName}" width="200" height="200">
@@ -139,8 +136,7 @@ width:16px;height:16px;background:##B2EBF4;}
 		    <h3>내용</h3>
 		    <div th:object="${franchiseeInfo}">
 		      <ul>
-		        <li th:text="*{franchiseeSpec?.picContent}">cpu</li>
-		        
+		        <p th:text="*{franchiseeSpec?.picContent}"></p>
 		      </ul>
 		    </div>  
 		 
@@ -158,8 +154,10 @@ width:16px;height:16px;background:##B2EBF4;}
 					<input multiple="multiple" type="file" class="form-control" id="franchiseePic" placeholder="Enter Pictures" name="franchiseePicList" >
 				</div>
 				
-				<button id="addButton" type="submit" class="btn btn-primary">입력</button>
+				<button id="addButton" type="submit" class="btn btn-primary">입력</button><br>
+		<a href="#" th:href="@{/removeFranchisee?(franchiseeNo=${str4.franchiseeNo})}" class="btn btn-primary">정보삭제</a>
 			</form>
+		
 	</tr>	
 		
 	</div>

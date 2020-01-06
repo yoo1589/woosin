@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<!--
+	Transitive by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+
+<head>
+	<title>Generic - Transitive by TEMPLATED</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+	<style>
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+p,h3,li,a,tr,td,th{
+      font-family: "Nanum Gothic", sans-serif;
+      font-size: 22px;
+}
+button{
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:68px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+button:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+</style>
+	
+	
+	
+	<body class="subpage">
+
+	<!-- Header -->
+		<header id="header">
+			<div class="logo"><a href="/index">우신종합건설</a></div>
+			<a href="#menu" class="toggle">MENU<span>Menu</span></a>
+		</header>
+
+	<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index">Home</a></li>
+					<li><a href="woosinIntroduce">회사소개</a></li>
+					<li><a href="woosinCompuny">주요사업 내용</a></li>
+					<li><a href="coperrationWoosin">주요실적</a></li>
+					<li><a href="imgList">공사이미지</a></li>
+					<li><a href="registrationWoosin">인증/보유</a></li>
+					<li><a href="Community">커뮤니티</a></li>
+				</ul>
+			</nav>
+	
+		<!-- Two -->
+			<section id="two" class="wrapper style3">
+				<div class="inner">
+					<div id="flexgrid">
+						<div>
+							<header>
+								<h3>업무흐름표</h3>
+							</header>
+							<img src="images/203.png" alt="" style="filter:invert()" width="230px" height="180px" />
+							<ul class="actions">
+								<li><a href="/woosinIntroduce2" class="button alt">Learn More</a></li>
+							</ul>
+						</div>
+						<div>
+							<header>
+								<h3>등록증</h3>
+							</header>
+							<img src="images/201.png" alt="" style="filter:invert()"  width="230px" height="180px" />
+							<ul class="actions">
+								<li><a href="/registrationWoosin" class="button alt">Learn More</a></li>
+							</ul>
+						</div>
+						<div>
+							<header>
+								<h3>오시는길</h3>
+							</header>
+							<img src="images/204.png" alt="" style="filter:invert()"  width="230px" height="180px" />
+							<ul class="actions">
+								<li><a href="/woosinIntroduce3" class="button alt">Learn More</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>	
+	
+	<!-- One -->
+		<section id="one" class="wrapper style2">
+			<div class="inner">
+				
+			<div class="row" th:each="str4:${list}">
+			<table>	
+			<tr>
+			    <th>[번호]</th>
+			    <th>[ID]</th>
+			    <th>[제목]</th>
+			    <th>[날짜]</th>
+			  </tr>	
+				<tr>
+			    <td th:text="${str4.franchiseeNo}" style="color: black;"></td>
+			    <td th:text="${str4.franchiseeName}" style="color: black;"></td>
+			    <td th:text="${str4.franchiseeTitle}" style="color: black;"></td>
+			    <td th:text="${str4.franchiseeDate}" style="color: black;"></td>
+			   </tr> 
+			</table>   
+			   
+			  	<div th:object="${franchiseeInfo}">
+			     <p style="color: black;" th:text="*{franchiseeSpec?.picContent}"></p>
+			    </div> 
+			    
+		        <div th:each="pic : ${franchiseeInfo.franchisePicList}">
+			       <div>
+			         <img th:src="${franchiseeInfo.uploadPath} + ${pic.fileName}" th:alt-title="${pic.originName}" width="500" height="500">
+			       </div>
+		    	</div>	    	
+			</div>
+					
+			</div>
+		</section>
+			  	 
+		
+			<!-- Four -->
+			<section id="four" class="wrapper style3">
+				<div class="inner">
+
+					<header class="align-center">
+						<p style="font-size:17px">대표 : 유광열 | 사업자번호 : 246-81-00380<br>
+						주소 : 인천광역시 계양구 계양대로 138 4층(작전동)<br>
+						Tel : 032) 549-2207/2208 | Fax : 032) 549-2209 	</p>						
+						<div class="copyright">
+						<p  style="font-size:17px">Copyright &copy; woosin<br>
+						Web Agency: kuoo</p>
+						</div>
+					</header>
+				</div>
+			</section>
+
+					
+	<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

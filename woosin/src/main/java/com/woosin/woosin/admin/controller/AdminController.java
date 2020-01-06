@@ -22,6 +22,38 @@ import com.woosin.woosin.customer.vo.Timeline;
 @Controller
 public class AdminController {
 	@Autowired AdminService adminService;
+	// 가맹점 상품 삭제 요청
+	
+	
+	@GetMapping("/removeFranchisee")
+	public String modifyFranchiseeInfo(FranchiseeInfoForm franchiseeInfoForm) {
+		System.out.println("modifyFranchiseeInfo POST 요청");
+		System.out.println("Controller franchiseeInfoForm: " + franchiseeInfoForm);
+		
+		int rows = adminService.modifyFranchiseeInfo(franchiseeInfoForm);
+		if(rows < 0) 
+			System.out.println("파일 업로드 안 됨");
+		else
+			System.out.println("처리된 행의 수: " + rows);
+		
+		return "redirect:/detailAdmin?franchiseeNo="+franchiseeInfoForm.getFranchiseeNo();
+	}
+	
+	// 게시글 정보 디테일
+	@GetMapping("/detailFranchisee")
+	public String detailFranchisee(Model model, @RequestParam("franchiseeNo")int franchiseeNo) {
+		System.out.println("컨트롤러요청");
+		System.out.println(franchiseeNo);
+		List<Franchisee> list = adminService.getFranchiseeList(franchiseeNo);
+		model.addAttribute("list",list);
+		// 가맹점 정보 사진, 업로드 경로, pc사양 가져와서 model로 넘김
+		Map<String, Object> franchiseeInfo = adminService.getFranchiseeInfo(franchiseeNo);
+		System.out.println("franchiseeInfo:" + franchiseeInfo);
+		model.addAttribute("franchiseeInfo", franchiseeInfo);
+		
+		return "detailFranchisee";
+	}
+	
 	// 게시글 정보 디테일
 	@GetMapping("/detailAdmin")
 	public String QnaCustomerDetail(HttpSession session, Model model, @RequestParam("franchiseeNo")int franchiseeNo) {
@@ -54,7 +86,7 @@ public class AdminController {
 		else
 			System.out.println("success rows : "+ rows);
 		
-		return "redirect:/adminIndex";
+		return "redirect:/detailAdmin?franchiseeNo="+franchiseeInfoForm.getFranchiseeNo();
 	}
 	
 	// 공지사항 리스트 삭제
@@ -78,6 +110,14 @@ public class AdminController {
     public String cancelSeatReservation3(
     	@RequestParam(value="timelineNo") int timelineNo) {
 		adminService.deleteCorperration3(timelineNo);
+        return "redirect:/adminIndex";
+	}	
+	
+	// 물류센터 삭제
+	@GetMapping("/delFranchisee")
+    public String delFranchisee(
+    		@RequestParam(value="franchiseeNo") int franchiseeNo) {
+		adminService.delFranchisee(franchiseeNo);
         return "redirect:/adminIndex";
 	}	
 	
